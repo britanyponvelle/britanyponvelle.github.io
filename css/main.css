@@ -42,3 +42,17 @@ body {
     margin: 0 auto; }
   .wrapper {
     width: 760px; } }
+
+a {
+  color: #323232;
+  text-decoration: none;
+  font-weight: 400;
+  display: block;
+  text-align: right; }
+  a.active {
+    text-decoration: none;
+    font-weight: 700;
+    border-bottom: 5px solid #323232; }
+  a:hover {
+    background-color: #EFC100;
+    border-bottom: 5px solid #323232; }
