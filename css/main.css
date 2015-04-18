@@ -1,6 +1,25 @@
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro);
+strong {
+  font-weight: 700; }
+
+h1 {
+  font-size: 4.236em;
+  line-height: 1.5em;
+  font-weight: 200; }
+
+h2 {
+  font-size: 2.618em;
+  line-height: 1.5em;
+  font-weight: 700; }
+
+h3 {
+  font-size: 1.618em;
+  line-height: 1.5em;
+  font-weight: 700; }
+
 body {
   background: #F9F9F9;
   color: #323232;
   font-family: 'Source Sans Pro', sans-serif;
-  font-size: 3em; }
+  font-size: 1em;
+  font-weight: 400; }
