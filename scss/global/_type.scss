@@ -7,18 +7,32 @@ strong {
 	font-weight: $bold;
 }
 
+// Perfect Forth for viewports smaller than 500
 h1 {
-	font-size: 4.236em; //67px
-	line-height: 1.5em;
+	font-size: 2.369em; //37px
+	line-height: 1.3em;
 	font-weight: $light;
 }
 h2 {
-	font-size: 2.618em; //41px
+	font-size: 1.777em; //28px
 	line-height: 1.5em;
 	font-weight: $bold;
 }
 h3 {
-	font-size: 1.618em; //25px
+	font-size: 1.333em; //21px
 	line-height: 1.5em;
 	font-weight: $bold;
+}
+
+@media (min-width: 500px) {
+	// Golden ratio for viewports 500 and above
+	h1 {
+		font-size: 4.236em; //67px
+	}
+	h2 {
+		font-size: 2.618em; //41px
+	}
+	h3 {
+		font-size: 1.618em; //25px
+	}
 }

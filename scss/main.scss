@@ -2,10 +2,21 @@
 @import 'global/type';
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro);
 
+// BODY
+
 body {
   background: $off-white;
   color: $dark-grey;
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 1em;
   font-weight: $normal;
+}
+
+.main {
+	padding: 1em;
+}
+
+.wrapper {
+	padding: 1em;
+	width: 90%;
 }
