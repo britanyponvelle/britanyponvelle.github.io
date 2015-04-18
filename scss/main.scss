@@ -1,8 +1,9 @@
 @import 'global/color';
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro);
 
 body {
   background: $off-white;
   color: $dark-grey;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
   font-size: 3em;
 }
