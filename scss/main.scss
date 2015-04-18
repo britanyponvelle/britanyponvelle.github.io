@@ -28,3 +28,22 @@ body {
 		//padding-top: 0;
 	}
 }
+
+// LINKS
+
+a {
+			color: $dark-grey;
+			text-decoration: none;
+			font-weight: $normal;
+			display: block;
+			text-align: right;
+			&.active {
+				text-decoration: none;
+				font-weight: $bold;
+				border-bottom: 5px solid $dark-grey;
+			}
+			&:hover {
+				background-color: #EFC100;
+				border-bottom: 5px solid $dark-grey;
+			}
+		}
