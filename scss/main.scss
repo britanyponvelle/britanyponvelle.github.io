@@ -16,3 +16,15 @@ body {
 	padding: 1em;
 	width: 90%;
 }
+
+// STUPID LARGE DESKTOP BREAKPOINT
+@media (min-width: 1000px) {
+	.wrapper {
+		max-width: 1000px;
+		margin: 0 auto;
+	}
+	.wrapper {
+		width: 760px;
+		//padding-top: 0;
+	}
+}
