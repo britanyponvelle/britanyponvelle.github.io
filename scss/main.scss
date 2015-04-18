@@ -1,13 +1,13 @@
 @import 'global/color';
 @import 'global/type';
-@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro);
+@import url(http://fonts.googleapis.com/css?family=Source+Code+Pro);
 
 // BODY
 
 body {
   background: $off-white;
   color: $dark-grey;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Source Code Pro', ;
   font-size: 1em;
   font-weight: $normal;
 }
