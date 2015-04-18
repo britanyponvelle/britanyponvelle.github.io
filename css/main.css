@@ -35,3 +35,10 @@ body {
 .wrapper {
   padding: 1em;
   width: 90%; }
+
+@media (min-width: 1000px) {
+  .wrapper {
+    max-width: 1000px;
+    margin: 0 auto; }
+  .wrapper {
+    width: 760px; } }
