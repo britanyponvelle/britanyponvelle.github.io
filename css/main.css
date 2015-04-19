@@ -2,6 +2,9 @@
 strong {
   font-weight: 700; }
 
+p {
+  margin-bottom: 2em; }
+
 h1 {
   font-size: 2.369em;
   line-height: 1.3em;
@@ -118,6 +121,10 @@ a {
   width: 100%;
   height: auto; }
 
+.flex-half {
+  width: 100%;
+  height: auto; }
+
 .flex-item {
   width: 33%;
   height: 250px;
@@ -135,7 +142,7 @@ a {
   margin: 0 1em 1em 0; }
 
 @media (min-width: 700px) {
-  .flex-half-default {
+  .flex-half {
     width: 50%;
     height: auto; }
   .flex-item {
@@ -146,4 +153,4 @@ a {
     max-width: 1000px;
     margin: 0 auto; }
   .wrapper {
-    width: 800px; } }
+    width: 1000px; } }
