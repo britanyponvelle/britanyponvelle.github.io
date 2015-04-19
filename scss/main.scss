@@ -79,12 +79,9 @@ a {
 }
 		
  
-.flex-items-default {
-    width: 300px;
-    height: 250px;
-    flex-grow: 0;
-    flex-shrink: 0;
-    flex-basis: 0;
+.flex-half-default {
+    width: 100%;
+    height: auto;
 }
 		
  .flex-item-1 {
@@ -103,6 +100,14 @@ a {
     flex-basis: 200px;
 }
 	
+
+// 700px MEDIUM BREAKPOINT
+@media (min-width: 700px) {
+	.flex-half-default {
+    width: 50%;
+    height: auto;
+}
+}
 
 // STUPID LARGE DESKTOP BREAKPOINT
 @media (min-width: 1000px) {
