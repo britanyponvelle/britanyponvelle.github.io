@@ -79,18 +79,19 @@ a {
 }
 		
  
-.flex-half-default {
+.flex-full {
     width: 100%;
     height: auto;
 }
 		
  .flex-item {
-    width: 100%;
+    width: 33%;
     height: 250px;
     flex-grow: 1;
     flex-shrink: 0;
-    background-color: $medium-grey;
-}	
+    flex-basis: 200px;
+}
+		
 
 // 700px MEDIUM BREAKPOINT
 @media (min-width: 700px) {
