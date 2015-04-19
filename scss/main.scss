@@ -23,6 +23,12 @@ header {
 	p {
 		a {
 			border-bottom: none;
+			&:hover {
+				background-color: $off-white;
+				color: $dark-grey;
+				padding: 0;
+				border-bottom: none;
+			}
 		}
 	}
 }
