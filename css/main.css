@@ -20,7 +20,7 @@ h3 {
 span {
   font-size: 0.9em;
   line-height: 1.4em;
-  color: #AEAEAE;
+  color: #959595;
   font-weight: 400; }
 
 @media (min-width: 500px) {
@@ -114,21 +114,11 @@ a {
       -ms-flex-align: start;
           align-items: flex-start; }
 
-.flex-items-default {
-  width: 300px;
-  height: 250px;
-  -webkit-box-flex: 0;
-  -webkit-flex-grow: 0;
-      -ms-flex-positive: 0;
-          flex-grow: 0;
-  -webkit-flex-shrink: 0;
-      -ms-flex-negative: 0;
-          flex-shrink: 0;
-  -webkit-flex-basis: 0;
-      -ms-flex-preferred-size: 0;
-          flex-basis: 0; }
+.flex-half-default {
+  width: 100%;
+  height: auto; }
 
-.flex-item-1 {
+.flex-item {
   width: 100%;
   height: 250px;
   -webkit-box-flex: 1;
@@ -138,23 +128,14 @@ a {
   -webkit-flex-shrink: 0;
       -ms-flex-negative: 0;
           flex-shrink: 0;
-  -webkit-flex-basis: 200px;
-      -ms-flex-preferred-size: 200px;
-          flex-basis: 200px; }
+  background-color: #959595; }
 
-.flex-item-2 {
-  width: 100%;
-  height: 250px;
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  -webkit-flex-shrink: 0;
-      -ms-flex-negative: 0;
-          flex-shrink: 0;
-  -webkit-flex-basis: 200px;
-      -ms-flex-preferred-size: 200px;
-          flex-basis: 200px; }
+@media (min-width: 700px) {
+  .flex-half-default {
+    width: 50%;
+    height: auto; }
+  .flex-item {
+    width: 50%; } }
 
 @media (min-width: 1000px) {
   .wrapper {
