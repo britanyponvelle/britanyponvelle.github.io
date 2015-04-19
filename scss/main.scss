@@ -8,7 +8,7 @@ body {
   background: $off-white;
   color: $dark-grey;
   font-family: 'Source Code Pro', ;
-  font-size: 1em;
+  font-size: 0.9em;
   font-weight: $normal;
 }
 
@@ -28,7 +28,7 @@ header {
 
 .wrapper {
 	padding: 1em;
-	width: 100%;
+	width: 95%;
 }
 
 // LINKS
@@ -38,16 +38,16 @@ a {
 	text-decoration: none;
 	font-weight: $normal;
 	display: block;
-	border-bottom: 3px solid $red;
+	border-bottom: 2px solid $red;
 	&.active {
 		text-decoration: none;
-		border-bottom: 3px solid $red;
+		border-bottom: 2px solid $red;
 		}
 	&:hover {
 		color: $off-white;
 		padding: 1px 4px;
 		background-color: $red;
-		border-bottom: 3px solid $red;
+		border-bottom: 2px solid $red;
 		}
 }
 
