@@ -32,16 +32,16 @@ a {
 	text-decoration: none;
 	font-weight: $normal;
 	display: block;
-	border-bottom: 3px solid #AD1625;
+	border-bottom: 3px solid $red;
 	&.active {
 		text-decoration: none;
-		border-bottom: 3px solid #AD1625;
+		border-bottom: 3px solid $red;
 		}
 	&:hover {
 		color: $off-white;
 		padding: 1px 4px;
-		background-color: #AD1625;
-		border-bottom: 3px solid #AD1625;
+		background-color: $red;
+		border-bottom: 3px solid $red;
 		}
 }
 
