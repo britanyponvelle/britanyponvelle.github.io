@@ -83,6 +83,11 @@ a {
     width: 100%;
     height: auto;
 }
+
+.flex-half {
+    width: 100%;
+    height: auto;
+}
 		
  .flex-item {
     width: 33%;
@@ -97,7 +102,7 @@ a {
 
 // 700px MEDIUM BREAKPOINT
 @media (min-width: 700px) {
-	.flex-half-default {
+	.flex-half {
     width: 50%;
     height: auto;
 	}
@@ -113,7 +118,7 @@ a {
 		margin: 0 auto;
 	}
 	.wrapper {
-		width: 800px;
+		width: 1000px;
 		//padding-top: 0;
 	}
 }
