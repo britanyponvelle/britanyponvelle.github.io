@@ -20,9 +20,16 @@ h2 {
 }
 h3 {
 	font-size: 1.333em; //21px
-	line-height: 1.5em;
-	font-weight: $bold;
+	line-height: 1em;
+	font-weight: $normal;
 }
+span {
+	font-size: 1em; //16px
+	line-height: 1.5em;
+	color: $medium-grey;
+	font-weight: $normal;
+}
+
 
 @media (min-width: 500px) {
 	// Golden ratio for viewports 500 and above

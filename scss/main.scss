@@ -12,9 +12,37 @@ body {
   font-weight: $normal;
 }
 
+header {
+	p {
+		a {
+			border-bottom: none;
+		}
+	}
+}
+
 .wrapper {
 	padding: 1em;
-	width: 90%;
+	width: 100%;
+}
+
+// LINKS
+
+a {
+	color: $dark-grey;
+	text-decoration: none;
+	font-weight: $normal;
+	display: block;
+	border-bottom: 3px solid #AD1625;
+	&.active {
+		text-decoration: none;
+		border-bottom: 3px solid #AD1625;
+		}
+	&:hover {
+		color: $off-white;
+		padding: 1px 4px;
+		background-color: #AD1625;
+		border-bottom: 3px solid #AD1625;
+		}
 }
 
 // STUPID LARGE DESKTOP BREAKPOINT
@@ -28,22 +56,3 @@ body {
 		//padding-top: 0;
 	}
 }
-
-// LINKS
-
-a {
-			color: $dark-grey;
-			text-decoration: none;
-			font-weight: $normal;
-			display: block;
-			text-align: right;
-			&.active {
-				text-decoration: none;
-				font-weight: $bold;
-				border-bottom: 5px solid $dark-grey;
-			}
-			&:hover {
-				background-color: #EFC100;
-				border-bottom: 5px solid $dark-grey;
-			}
-		}
