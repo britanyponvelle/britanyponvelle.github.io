@@ -114,12 +114,12 @@ a {
       -ms-flex-align: start;
           align-items: flex-start; }
 
-.flex-half-default {
+.flex-full {
   width: 100%;
   height: auto; }
 
 .flex-item {
-  width: 100%;
+  width: 33%;
   height: 250px;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
@@ -128,7 +128,11 @@ a {
   -webkit-flex-shrink: 0;
       -ms-flex-negative: 0;
           flex-shrink: 0;
-  background-color: #959595; }
+  -webkit-flex-basis: 200px;
+      -ms-flex-preferred-size: 200px;
+          flex-basis: 200px;
+  background-color: #959595;
+  margin: 0 1em 1em 0; }
 
 @media (min-width: 700px) {
   .flex-half-default {
