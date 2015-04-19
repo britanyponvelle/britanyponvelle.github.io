@@ -13,6 +13,12 @@ body {
 }
 
 header {
+	.wrapper {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			height: 60px;
+		}
 	p {
 		a {
 			border-bottom: none;
@@ -42,6 +48,15 @@ a {
 		padding: 1px 4px;
 		background-color: $red;
 		border-bottom: 3px solid $red;
+		}
+}
+
+.main-nav {
+		li {
+			float: left;
+			display: block;
+			display: flex;
+			width: 80px;
 		}
 }
 
