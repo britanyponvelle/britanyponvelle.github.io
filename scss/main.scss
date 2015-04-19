@@ -84,29 +84,23 @@ a {
     height: auto;
 }
 		
- .flex-item-1 {
+ .flex-item {
     width: 100%;
     height: 250px;
     flex-grow: 1;
     flex-shrink: 0;
-    flex-basis: 200px;
-}
-	
- .flex-item-2 {
-    width: 100%;
-    height: 250px;
-    flex-grow: 1;
-    flex-shrink: 0;
-    flex-basis: 200px;
-}
-	
+    background-color: $medium-grey;
+}	
 
 // 700px MEDIUM BREAKPOINT
 @media (min-width: 700px) {
 	.flex-half-default {
     width: 50%;
     height: auto;
-}
+	}
+	.flex-item {
+		width: 50%
+	}
 }
 
 // STUPID LARGE DESKTOP BREAKPOINT
