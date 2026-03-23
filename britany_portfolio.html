@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Britany Callahan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#F5F2EB;--ink:#2a2a25;--ink-light:#6b6960;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--cream);color:var(--ink);font-family:'Space Grotesk',sans-serif;overflow-x:hidden;}
+a{color:inherit;text-decoration:none;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 2.5rem;background:var(--cream);border-bottom:1px solid rgba(42,42,37,.12);}
+.nav-name{font-size:.85rem;letter-spacing:.08em;font-weight:700;font-family:'Space Mono',monospace;cursor:pointer;}
+.nav-links{display:flex;gap:2rem;font-size:.78rem;font-family:'Space Grotesk',sans-serif;}
+.nav-links a{opacity:.6;transition:opacity .2s;cursor:pointer;}
+.nav-links a:hover{opacity:1;}
+.page{display:none;min-height:100vh;}
+.page.active{display:block;}
+#home{padding-top:60px;}
+.ascii-scene{width:100%;overflow:hidden;background:var(--cream);position:relative;}
+.ascii-pre-wrap{width:100%;overflow:hidden;display:block;position:relative;}
+.ascii-pre{font-family:'Space Mono',monospace;font-size:10px;line-height:1.5;color:var(--ink);white-space:pre;display:block;user-select:none;padding:0;margin:0;transform-origin:top left;letter-spacing:.05em;}
+  .scene-label{position:absolute;top:28%;left:50%;transform:translate(-50%, calc(-50% + 20px));font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:300;letter-spacing:.25em;color:var(--ink);text-transform:uppercase;pointer-events:none;z-index:5;white-space:nowrap;}
+.ticker-band{width:100%;display:flex;align-items:center;overflow:hidden;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);background:var(--cream);white-space:nowrap;font-family:'Space Mono',monospace;font-size:10px;padding:.5rem 0;}
+.ticker-inner{display:inline-block;white-space:nowrap;animation:tickerScroll 36s linear infinite;color:var(--ink);letter-spacing:.05em;}
+@keyframes tickerScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@keyframes sailBoat{0%{left:105%}100%{left:-10%}}
+.hero-text{text-align:center;padding:3.5rem 2rem 2rem;}
+.hero-title{font-size:clamp(1.6rem,4vw,2.6rem);font-weight:600;font-family:'Space Grotesk',sans-serif;letter-spacing:-.02em;line-height:1.2;margin-bottom:1rem;}
+.hero-sub{font-size:.9rem;font-family:'Space Grotesk',sans-serif;font-weight:300;color:var(--ink-light);line-height:1.9;max-width:520px;margin:0 auto 2rem;}
+.hero-cta{display:inline-block;border:1px solid var(--ink);padding:.6rem 1.6rem;font-size:.75rem;font-family:'Space Mono',monospace;letter-spacing:.1em;transition:background .2s,color .2s;cursor:pointer;}
+.hero-cta:hover{background:var(--ink);color:var(--cream);}
+.section-label{text-align:center;font-size:.7rem;font-family:'Space Mono',monospace;letter-spacing:.15em;opacity:.45;padding:3rem 0 1.5rem;text-transform:uppercase;}
+.work-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:0;max-width:1200px;margin:0 auto;border-top:1px solid rgba(42,42,37,.12);border-left:1px solid rgba(42,42,37,.12);}
+.work-card{border-right:1px solid rgba(42,42,37,.12);border-bottom:1px solid rgba(42,42,37,.12);padding:2rem;cursor:pointer;transition:background .2s;position:relative;overflow:hidden;}
+.work-card:hover{background:rgba(42,42,37,.04);}
+.work-card-num{font-size:.65rem;font-family:'Space Mono',monospace;opacity:.3;margin-bottom:1rem;letter-spacing:.1em;}
+.work-card-title{font-size:1.05rem;font-family:'Space Grotesk',sans-serif;font-weight:600;margin-bottom:.4rem;line-height:1.3;}
+.work-card-type{font-size:.72rem;font-family:'Space Mono',monospace;opacity:.5;}
+.work-card-ascii{font-family:'Space Mono',monospace;font-size:9px;line-height:1.2;opacity:.25;margin-top:1.2rem;white-space:pre;pointer-events:none;}
+.work-card-arrow{position:absolute;bottom:1.5rem;right:1.5rem;font-size:.8rem;opacity:0;transition:opacity .2s;}
+.work-card:hover .work-card-arrow{opacity:.5;}
+#project{padding-top:80px;}
+.project-inner{max-width:800px;margin:0 auto;padding:3rem 2rem 6rem;}
+.project-back{font-size:.72rem;font-family:'Space Mono',monospace;letter-spacing:.06em;opacity:.5;cursor:pointer;display:inline-flex;align-items:center;gap:.4rem;margin-bottom:3rem;transition:opacity .2s;}
+.project-back:hover{opacity:1;}
+.project-label{font-size:.65rem;font-family:'Space Mono',monospace;letter-spacing:.14em;opacity:.4;text-transform:uppercase;margin-bottom:.8rem;}
+.project-title{font-size:clamp(1.6rem,4vw,2.4rem);font-family:'Space Grotesk',sans-serif;font-weight:600;letter-spacing:-.02em;line-height:1.2;margin-bottom:1.5rem;}
+.project-meta{display:flex;gap:2.5rem;margin-bottom:2.5rem;flex-wrap:wrap;}
+.project-meta-item{font-size:.82rem;font-family:'Space Grotesk',sans-serif;}
+.project-meta-item span{opacity:.45;display:block;font-family:'Space Mono',monospace;letter-spacing:.08em;margin-bottom:.25rem;text-transform:uppercase;font-size:.62rem;}
+.project-divider{border:none;border-top:1px solid rgba(42,42,37,.12);margin:2rem 0;}
+.project-section-title{font-size:.65rem;font-family:'Space Mono',monospace;letter-spacing:.14em;opacity:.45;text-transform:uppercase;margin-bottom:.8rem;margin-top:2.5rem;}
+.project-body{font-size:.95rem;font-family:'Space Grotesk',sans-serif;font-weight:300;line-height:1.85;color:rgba(42,42,37,.75);}
+.project-body p{margin-bottom:1.2rem;}
+.project-body strong{color:var(--ink);font-weight:500;}
+.project-ascii-banner{text-align:center;font-family:'Space Mono',monospace;font-size:9px;line-height:1.3;opacity:.18;margin:3rem 0;white-space:pre;}
+.project-nav{display:flex;justify-content:space-between;margin-top:4rem;padding-top:2rem;border-top:1px solid rgba(42,42,37,.12);font-size:.72rem;font-family:'Space Mono',monospace;}
+.project-nav a{opacity:.5;cursor:pointer;transition:opacity .2s;}
+.project-nav a:hover{opacity:1;}
+#about{padding-top:80px;}
+.about-inner{max-width:700px;margin:0 auto;padding:4rem 2rem 6rem;}
+.about-ascii{text-align:center;font-family:'Space Mono',monospace;font-size:9px;line-height:1.3;opacity:.2;margin-bottom:3rem;white-space:pre;}
+.about-title{font-size:clamp(1.4rem,3vw,2rem);font-family:'Space Grotesk',sans-serif;font-weight:600;letter-spacing:-.02em;margin-bottom:1.5rem;line-height:1.2;}
+.about-body{font-size:.95rem;font-family:'Space Grotesk',sans-serif;font-weight:300;line-height:1.95;color:rgba(42,42,37,.75);}
+.about-body p{margin-bottom:1.4rem;}
+.about-body strong{color:var(--ink);font-weight:500;}
+.about-values{margin:2.5rem 0;border-top:1px solid rgba(42,42,37,.12);border-bottom:1px solid rgba(42,42,37,.12);padding:2rem 0;}
+.about-values-title{font-size:.65rem;font-family:'Space Mono',monospace;letter-spacing:.14em;opacity:.45;text-transform:uppercase;margin-bottom:1.2rem;}
+.value-item{display:flex;gap:1rem;margin-bottom:1rem;font-size:.88rem;font-family:'Space Grotesk',sans-serif;font-weight:300;line-height:1.7;}
+.value-dot{font-family:'Space Mono',monospace;opacity:.35;flex-shrink:0;}
+.about-contact{margin-top:3rem;}
+.about-contact-title{font-size:.65rem;font-family:'Space Mono',monospace;letter-spacing:.14em;opacity:.45;text-transform:uppercase;margin-bottom:1rem;}
+.contact-links{display:flex;gap:1.5rem;font-size:.82rem;font-family:'Space Grotesk',sans-serif;flex-wrap:wrap;}
+.contact-links a{border-bottom:1px solid rgba(42,42,37,.25);padding-bottom:.1em;transition:border-color .2s;}
+.contact-links a:hover{border-color:var(--ink);}
+footer{text-align:center;padding:2.5rem;font-size:.7rem;font-family:'Space Mono',monospace;opacity:.35;letter-spacing:.06em;border-top:1px solid rgba(42,42,37,.1);}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-name" onclick="showPage('home')">BRITANY CALLAHAN</div>
+  <div class="nav-links">
+    <a onclick="showPage('home')">Work</a>
+    <a onclick="showPage('about')">Me</a>
+  </div>
+</nav>
+
+<div id="home" class="page active">
+  <div class="ascii-scene">
+    <div class="ascii-pre-wrap">
+      <pre class="ascii-pre" id="ascii-scene-pre"></pre>
+    </div>
+    <div class="scene-label">UX Designer</div>
+  </div>
+  <div class="ticker-band">
+    <div class="ticker-inner">
+      &nbsp;&nbsp;&mdash;&nbsp;&nbsp;Let's make beautiful and helpful software together&nbsp;&nbsp;&mdash;&nbsp;&nbsp;Let's make beautiful and helpful software together&nbsp;&nbsp;&mdash;&nbsp;&nbsp;Let's make beautiful and helpful software together&nbsp;&nbsp;&mdash;&nbsp;&nbsp;Let's make beautiful and helpful software together&nbsp;&nbsp;&mdash;&nbsp;&nbsp;
+    </div>
+  </div>
+  <div class="hero-text">
+    <div class="hero-title">Design that helps people.<br>Built with joy.</div>
+    <div class="hero-sub">Staff product designer at Intuit QuickBooks &middot; Payments team.</div>
+    <div class="hero-cta" onclick="showPage('about')">About me &rarr;</div>
+  </div>
+  <div class="section-label">// selected work</div>
+  <div class="work-grid" id="work-grid"></div>
+  <footer>bponve20@gmail.com &nbsp;&middot;&nbsp;
+    <a href="https://www.linkedin.com/in/britany-ponvelle/" target="_blank">LinkedIn</a>
+    &nbsp;&middot;&nbsp;
+    <a href="https://dribbble.com/britanyponvelle" target="_blank">Dribbble</a>
+  </footer>
+</div>
+
+<div id="project" class="page">
+  <div class="project-inner" id="project-content"></div>
+</div>
+
+<div id="about" class="page">
+  <div class="about-inner">
+    <div class="about-ascii">    ___
+   (o_o)
+   / | \
+  /  |  \</div>
+    <div class="about-title">I believe the best products<br>are built in joy.</div>
+    <div class="about-body">
+      <p>Hey, I'm Britany. Staff product designer at <strong>Intuit QuickBooks</strong>, Payments team.</p>
+      <p>I've spent my career across fintech, healthcare, energy, and enterprise software. The most durable products come from teams <strong>genuinely excited about the problem they're solving</strong>.</p>
+      <p>I obsess over user needs. I read support tickets for fun. A designer's job is to be the loudest voice in the room for the person who isn't in the room.</p>
+      <p>I'm looking for a team that finds <strong>joy in the work</strong> and genuinely cares about the people using what they build.</p>
+      <p>When I'm not designing, I'm listening to an audiobook, working on pottery, or taking ridiculously long walks through Wisconsin.</p>
+    </div>
+    <div class="about-values">
+      <div class="about-values-title">// what I bring</div>
+      <div class="value-item"><span class="value-dot">+</span><span><strong>User obsession</strong> &mdash; I don't guess. I watch, listen, and ask.</span></div>
+      <div class="value-item"><span class="value-dot">+</span><span><strong>Systems thinking</strong> &mdash; Edge cases are features, not afterthoughts.</span></div>
+      <div class="value-item"><span class="value-dot">+</span><span><strong>Cross-functional fluency</strong> &mdash; PMs, engineers, strategists, writers, devs.</span></div>
+      <div class="value-item"><span class="value-dot">+</span><span><strong>Mission-driven</strong> &mdash; Software that helps people, not just makes money.</span></div>
+      <div class="value-item"><span class="value-dot">+</span><span><strong>Joyful culture</strong> &mdash; Kind, curious, excited teams.</span></div>
+    </div>
+    <div class="about-contact">
+      <div class="about-contact-title">// let's talk</div>
+      <div class="contact-links">
+        <a href="mailto:bponve20@gmail.com">bponve20@gmail.com</a>
+        <a href="https://www.linkedin.com/in/britany-ponvelle/" target="_blank">LinkedIn</a>
+        <a href="https://dribbble.com/britanyponvelle" target="_blank">Dribbble</a>
+      </div>
+    </div>
+  </div>
+  <footer>&copy; Britany Callahan &middot; Made with joy</footer>
+</div>
+
+<script>
+var SKY_ROWS = 29;
+var SCENE_W  = (window.innerWidth < 600) ? 60 : 360;
+var W        = SCENE_W;
+var BAY_ABS    = SKY_ROWS + 2;
+var SPRITE_TOP = BAY_ABS - 10;
+
+var CLOUD_DEFS = [
+  [2, Math.floor(W*0.01), [
+    "   ._--._.   ",
+    " .(-.-.-.-)  ",
+    "(-.-.-.-.-.-)",
+    " `---------` "
+  ]],
+  [3, Math.floor(W*0.09), [
+    "     ._--._.    .--._  ",
+    "   .(-.:-.:-).(-.:.-.)",
+    "  (-.(-.:.:.:.:.:.:.-.-)",
+    " (-.-(-.:.:.:.:.:.:.-.-.",
+    "(-.-.-.-.:.:.:.:.:.-.-.-)",
+    "(-.-.-.-.-.:.:.:.-.-.-.-)",
+    " `(-.-.-.-.-.-.-.-.-.-)` "
+  ]],
+  [4, Math.floor(W*0.32), [
+    "  ._--._   ",
+    " (-.:.:-.)  ",
+    "(-.:.:.:.-)  ",
+    "(-.:.:.:.:.-)",
+    " `(-.-.-.--)` "
+  ]],
+  [2, Math.floor(W*0.48), [
+    "      ._--._.      ._--._   ",
+    "    .(-.:.:-.)-.-(-.:.:.-)  ",
+    "   (-.(-.:.:.:.:.:.:.:-.-.) ",
+    "  (-.-(-.:.:.:.:.:.:.:.-.-.) ",
+    " (-.-.(-.:.:.:.:.:.:.:.-.-.-)",
+    "(-.-.-.-.:.:.:.:.:.:.-.-.-.-)",
+    " `(-.-.-.-.-.-.-.-.-.-.--..)` "
+  ]],
+  [5, Math.floor(W*0.73), [
+    "  ._--._.  ",
+    " (-.:.:.-)  ",
+    "(-.:.:.:.-)  ",
+    " `(-.-.---)` "
+  ]],
+  [3, Math.floor(W*0.82), [
+    "   ._--._.   ",
+    " .(-.:.:-.)  ",
+    "(-.(-.:.:.:-.) ",
+    "(-.-.-.:.:.:.-.)",
+    " `(-.-.-.-.--.)` "
+  ]],
+  [2, Math.floor(W*0.01)+W, [
+    "   ._--._.   ",
+    " .(-.-.-.-)  ",
+    "(-.-.-.-.-.-)",
+    " `---------` "
+  ]],
+  [3, Math.floor(W*0.09)+W, [
+    "     ._--._.    .--._  ",
+    "   .(-.:-.:-).(-.:.-.)",
+    "  (-.(-.:.:.:.:.:.:.-.-)",
+    " (-.-(-.:.:.:.:.:.:.-.-.",
+    "(-.-.-.-.:.:.:.:.:.-.-.-)",
+    "(-.-.-.-.-.:.:.:.-.-.-.-)",
+    " `(-.-.-.-.-.-.-.-.-.-)` "
+  ]],
+  [4, Math.floor(W*0.32)+W, [
+    "  ._--._   ",
+    " (-.:.:-.)  ",
+    "(-.:.:.:.-)  ",
+    "(-.:.:.:.:.-)",
+    " `(-.-.-.--)` "
+  ]],
+  [2, Math.floor(W*0.48)+W, [
+    "      ._--._.      ._--._   ",
+    "    .(-.:.:-.)-.-(-.:.:.-)  ",
+    "   (-.(-.:.:.:.:.:.:.:-.-.) ",
+    "  (-.-(-.:.:.:.:.:.:.:.-.-.) ",
+    " (-.-.(-.:.:.:.:.:.:.:.-.-.-)",
+    "(-.-.-.-.:.:.:.:.:.:.-.-.-.-)",
+    " `(-.-.-.-.-.-.-.-.-.-.--..)` "
+  ]]
+];
+
+var SUN = [
+  [1, W-12, "  \\  |  /  "],
+  [2, W-12, " -- (o) -- "],
+  [3, W-12, "  /  |  \\  "]
+];
+
+var SKYLINE = [
+  "         ___                 ___  ___          ___  ___  ___  ___                   ___  ___         ___  ___        ",
+  " ___    |   |    _________  |   ||   |  _     |   ||   ||   ||   |   _________     |   ||   |  ___  |   ||   |  ___ ",
+  "|   |___|   |___|         |_|   ||   |_| |____|   ||   ||   ||   |__|         |____|   ||   |_|   |_|   ||   |_|   |",
+  "|   |   |   |   | [=] [=] | |   ||   || |    |   ||   ||   ||   |  | [=] [=] |    |   ||   || [=] |   ||   || [=] |",
+  "|   |   |   |   | [=] [=] | |   ||   || |    |   ||   ||   ||   |  | [=] [=] |    |   ||   || [=] |   ||   || [=] |",
+  "|[=]|[=]|[=]|[=]| [=] [=] |_|[=]||[=]|| |  _|[=]||[=]||[=]||[=]|__| [=] [=] |____|[=]||[=]|| [=] |[=]||[=]|| [=] |",
+  "|[=]|[=]|[=]|[=]|           |[=]||[=]||/\\ | |[=]||[=]||[=]||[=]|  |     /\\    |   |[=]||[=]||  /\\ |[=]||[=]||  /\\ |",
+  "|[=]|[=]|[=]|[=]|   [=][=]  |[=]||[=]|/  \\| |[=]||[=]||[=]||[=]|  |    /  \\   |   |[=]||[=]| /  \\|[=]||[=]| /  \\|",
+  "|[=]|[=]|[=]|[=]|   [=][=]  |[=]||[=]/    \\ |[=]||[=]||[=]||[=]|  |   / HH \\  |   |[=]||[=]|/    |[=]||[=]|/    |",
+  "|___|___|___|___|_____________|___||__/______\\|___||___||___||___|__|__/______\\__|___|___||___|_________|___||___|______|",
+  "=======================================================================================================================",
+  "_______________________________________________________________________________________________________________________"
+];
+
+var SPRITE_HULL_START = 10;
+var SPRITE_MAST_COL   = 9;
+var SPRITE = [
+  "         |>>>         ",
+  "         |            ",
+  "        /|\\           ",
+  "       / | \\          ",
+  "      /  |  \\         ",
+  "     /   |   \\        ",
+  "    /    |    \\       ",
+  "   /     |     \\      ",
+  "  /      |      \\     ",
+  " /       |       \\    ",
+  "/________|________\\   ",
+  "|  o  o  o         |~~",
+  " '._________________' "
+];
+
+var boatX    = SCENE_W + 10;
+var BOAT_SPEED = 6;
+var cloudX   = 0;
+var lastTime = null;
+
+function overwriteAt(row, pos, str) {
+  if (pos + str.length < 0 || pos >= SCENE_W) return row;
+  var arr = (row + " ".repeat(Math.max(0, SCENE_W - row.length))).split("");
+  for (var i = 0; i < str.length; i++) {
+    var idx = pos + i;
+    if (idx < 0 || idx >= arr.length) continue;
+    arr[idx] = str[i];
+  }
+  return arr.join("");
+}
+
+function pad(s, w) {
+  if (s.length >= w) return s.slice(0, w);
+  return s + " ".repeat(w - s.length);
+}
+
+function insertAt(row, pos, str) {
+  if (pos + str.length < 0 || pos >= SCENE_W) return row;
+  var needed = Math.max(0, SCENE_W - row.length);
+  var arr = (row + " ".repeat(needed)).split("");
+  for (var i = 0; i < str.length; i++) {
+    var idx = pos + i;
+    if (idx < 0 || idx >= arr.length) continue;
+    if (str[i] !== " ") arr[idx] = str[i];
+  }
+  return arr.join("");
+}
+
+function buildSkyRows(off) {
+  var rows = [];
+  var centerCol  = SCENE_W / 2;
+  var clearWidth = SCENE_W * 0.22;
+  for (var r = 0; r < SKY_ROWS; r++) {
+    var row = "";
+    var inBand = (r >= 10 && r <= 16);
+    for (var i = 0; i < SCENE_W; i++) {
+      var dot  = (r % 2 === 0 && i % 4 === 0) || (r % 2 === 1 && i % 4 === 2);
+      var dist = Math.abs(i - centerCol);
+      if (inBand && dist < clearWidth) {
+        row += " ";
+      } else if (inBand && dist < clearWidth * 1.4 && dot) {
+        row += ((i + r) % 8 === 0) ? "." : " ";
+      } else {
+        row += dot ? "." : " ";
+      }
+    }
+    rows.push(row);
+  }
+  for (var si = 0; si < SUN.length; si++) {
+    var sr = SUN[si][0], sc = SUN[si][1], st = SUN[si][2];
+    if (sr < SKY_ROWS) rows[sr] = insertAt(rows[sr], sc, st);
+  }
+  for (var ci = 0; ci < CLOUD_DEFS.length; ci++) {
+    var cd = CLOUD_DEFS[ci];
+    var startRow = cd[0];
+    var col      = cd[1] + Math.round(off);
+    var lines    = cd[2];
+    for (var li = 0; li < lines.length; li++) {
+      var cr = startRow + li;
+      if (cr < SKY_ROWS) rows[cr] = insertAt(rows[cr], col, lines[li]);
+    }
+  }
+  return rows.map(function(r) { return pad(r, SCENE_W); });
+}
+
+function buildStaticRows() {
+  var rows = [];
+  rows.push(pad("=".repeat(W), W));
+  rows.push(pad("_".repeat(W), W));
+  var wA = "~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ . ";
+  var wB = ". ~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ ";
+  for (var r = 0; r < 10; r++) {
+    var wave = "";
+    var src  = (r % 2 === 0) ? wA : wB;
+    while (wave.length < W + src.length) wave += src;
+    rows.push(pad(wave, W));
+  }
+  var wC = "~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ . ";
+  var wD = ". ~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ ";
+  var wE = "^~^~ ^~^~ ^~^~ ^~^~ ^~^~ ^~^~ ^~^~ ^~^~ ^~^~ ^~^~ ^~^~ ";
+  var wF = "~ . ~ ~ . ~ ~ . ~ ~ . ~ ~ . ~ ~ . ~ ~ . ~ ~ . ~ ~ . ~ ~ ";
+  var sC = "", sD = "", sE = "", sF = "";
+  while (sC.length < W + 60) { sC += wC; sD += wD; sE += wE; sF += wF; }
+  rows.push(pad(sC, W));
+  rows.push(pad(sD, W));
+  rows.push(pad(sE, W));
+  rows.push(pad(sF, W));
+  return rows;
+}
+
+var staticRows = buildStaticRows();
+
+function stampSkyline(allRows) {
+  var startRow = BAY_ABS - SKYLINE.length;
+  for (var li = 0; li < SKYLINE.length; li++) {
+    var absRow = startRow + li;
+    if (absRow < 0 || absRow >= allRows.length) continue;
+    var line   = SKYLINE[li];
+    var tiled  = "";
+    while (tiled.length < SCENE_W + line.length) tiled += line;
+    allRows[absRow] = tiled.slice(0, SCENE_W);
+  }
+}
+
+function renderScene(cOff) {
+  var skyRows = buildSkyRows(cOff);
+  var allRows = skyRows.concat(staticRows.slice());
+  stampSkyline(allRows);
+
+  var col = Math.round(boatX);
+  for (var li = 0; li < SPRITE.length; li++) {
+    var absRow = SPRITE_TOP + li;
+    if (absRow < 0 || absRow >= allRows.length) continue;
+    var line = SPRITE[li];
+    var arr  = (allRows[absRow] + " ".repeat(Math.max(0, SCENE_W - allRows[absRow].length))).split("");
+    if (li >= SPRITE_HULL_START) {
+      for (var ci = 0; ci < line.length; ci++) {
+        var idx = col + ci;
+        if (idx >= 0 && idx < arr.length) arr[idx] = line[ci];
+      }
+    } else {
+      var lEdge = SPRITE_MAST_COL - li;
+      var rEdge = SPRITE_MAST_COL + li;
+      for (var ci = lEdge + 1; ci < rEdge; ci++) {
+        var idx = col + ci;
+        if (idx >= 0 && idx < arr.length) arr[idx] = " ";
+      }
+      for (var ci = 0; ci < line.length; ci++) {
+        if (line[ci] !== " ") {
+          var idx = col + ci;
+          if (idx >= 0 && idx < arr.length) arr[idx] = line[ci];
+        }
+      }
+    }
+    allRows[absRow] = arr.join("");
+  }
+
+  var pre = document.getElementById("ascii-scene-pre");
+  if (pre) pre.textContent = allRows.join("\n");
+}
+
+function scaleAscii() {
+  var pre  = document.getElementById("ascii-scene-pre");
+  var wrap = pre && pre.parentElement;
+  if (!pre || !wrap) return;
+  pre.style.transform = "none";
+  wrap.style.height   = "";
+  var natW = pre.scrollWidth;
+  var natH = pre.scrollHeight;
+  var vpW  = window.innerWidth;
+  var vpH  = window.innerHeight * 0.75;
+  if (!natW || !natH) return;
+  var scale   = Math.max(vpW / natW, vpH / natH);
+  var scaledW = natW * scale;
+  var offsetX = (scaledW > vpW) ? -(scaledW - vpW) / 2 : 0;
+  pre.style.transform       = "translateX(" + offsetX + "px) scale(" + scale + ")";
+  pre.style.transformOrigin = "top left";
+  wrap.style.height = (natH * scale) + "px";
+}
+
+function animate(ts) {
+  if (!lastTime) lastTime = ts;
+  var dt = (ts - lastTime) / 1000;
+  lastTime = ts;
+  cloudX -= 3 * dt;
+  if (cloudX < -SCENE_W) cloudX += SCENE_W;
+  boatX -= BOAT_SPEED * dt;
+  if (boatX < -(SPRITE[0].length + 5)) boatX = SCENE_W * 0.3;
+  renderScene(cloudX);
+  requestAnimationFrame(animate);
+}
+
+renderScene(0);
+requestAnimationFrame(animate);
+window.addEventListener("load",   scaleAscii);
+window.addEventListener("resize", scaleAscii);
+setTimeout(scaleAscii, 300);
+setTimeout(scaleAscii, 800);
+
+function showPage(page, projectId) {
+  var pages = document.querySelectorAll(".page");
+  for (var i = 0; i < pages.length; i++) {
+    pages[i].classList.remove("active");
+  }
+  document.getElementById(page).classList.add("active");
+  window.scrollTo(0, 0);
+  if (page === "project" && projectId !== undefined) {
+    renderProject(projectId);
+  }
+}
+
+var projects = [
+  { id:0, title:"Intuit QuickBooks Payments", type:"Product Design - App", role:"Staff Product Designer", company:"Intuit",
+    ascii:"  .---------.\n  | $ PAY  |\n  |  ----   |\n  '---------'",
+    problem:"Small business owners spend significant time managing how they get paid, chasing invoices and navigating complex payment flows.",
+    solving:"I lead end-to-end UX for the QuickBooks Payments team, from first invoice to payout timelines.",
+    impact:"My work touches hundreds of thousands of small business owners daily.",
+    process:"My process centers on listening first, mapping failure modes before touching any wireframe." },
+  { id:1, title:"Proper Finance", type:"Product Design - App", role:"Senior Product Designer", company:"Proper Finance",
+    ascii:"  [=======]\n  | ledger |\n  [=======]",
+    problem:"Companies building financial products spend enormous time managing data integrity.",
+    solving:"I designed a reconciliation tool, financial data platform, and compliance tooling.",
+    impact:"A reconciliation that required custom engineering could happen in a few clicks.",
+    process:"I mapped mental models around correctness and built a UI that felt rigorous but approachable." },
+  { id:2, title:"BrandExtract 15-Year Anniversary", type:"Branding + Website", role:"Art Director", company:"BrandExtract",
+    ascii:"  *  15  *\n  ~years~\n  of grit",
+    problem:"Milestone campaigns often feel generic and self-congratulatory.",
+    solving:"I served as Art Director, leading microsite design centered on lived values.",
+    impact:"The microsite told the story of how real people embodied each value.",
+    process:"The biggest challenge was pacing a 15-year journey in a single scroll." },
+  { id:3, title:"Millar", type:"Website", role:"Art Director + Designer", company:"BrandExtract",
+    ascii:"  ~pressure~\n   sensing\n  /tech\\",
+    problem:"Millar evolved into an OEM services partner but their presence did not reflect that.",
+    solving:"I led concept development and art directed the full visual system.",
+    impact:"The redesign repositioned Millar as a precision integration partner.",
+    process:"Every decision was evaluated against one question: does this build confidence?" },
+  { id:4, title:"WillScot Experience", type:"Branding", role:"Art Director + Lead Designer", company:"BrandExtract",
+    ascii:"  [we]\n /unity\\\n \\together/",
+    problem:"WillScot needed an internal brand connecting thousands of employees to shared purpose.",
+    solving:"The conceptual anchor was we, meaning every individual contributes to the experience.",
+    impact:"The campaign rolled out across video, print, digital, signage, and a logo system.",
+    process:"Employees can tell when messaging is performative. I rooted everything in the concrete." },
+  { id:5, title:"Marathon Petroleum Corporation", type:"Website", role:"Lead Designer", company:"BrandExtract",
+    ascii:"  /--MPC--\\\n  | refine |\n  \\-------/",
+    problem:"Marathon needed a presence reflecting their scale while remaining accessible.",
+    solving:"I owned the full visual design, creating clear hierarchy for multiple audience types.",
+    impact:"An interactive operations map gave users a spatial understanding of MPC nationally.",
+    process:"Good information architecture is invisible. Users should never feel lost." },
+  { id:6, title:"Western LNG", type:"Branding + Website", role:"Design, UX, Front-end Dev", company:"BrandExtract",
+    ascii:"  ~ LNG ~\n  export\n  .flow.",
+    problem:"Western LNG needed a brand to establish credibility with infrastructure investors.",
+    solving:"I took on brand design, UX, and front-end development.",
+    impact:"The resulting brand communicated scale, precision, and responsibility.",
+    process:"Industrial audiences reward close reading. I designed hierarchies that honor that." },
+  { id:7, title:"Entoro Capital", type:"Website", role:"IA, UX, Visual Design, Front-end Dev", company:"Poetic Systems",
+    ascii:"  [$$$]\n  invest\n  /bank\\",
+    problem:"Entoro wanted to differentiate as a technology-forward investment bank.",
+    solving:"I owned the full project: IA, UX, visual design, and front-end development.",
+    impact:"The redesign gave Entoro a digital identity matching their positioning.",
+    process:"I started with IA, mapping all audience types before touching visual design." },
+  { id:8, title:"Triada Health", type:"Website", role:"Strategy, Design, Front-end Dev", company:"Poetic Systems",
+    ascii:"  + health +\n  /benefits\\\n  \\  for  /",
+    problem:"Triada had three distinct audiences with very different needs and literacy levels.",
+    solving:"I designed separate user journeys for each. One website, three experiences.",
+    impact:"Each audience got exactly the information they needed, nothing more.",
+    process:"This project crystallized my approach to complex audience segmentation.",
+    images: [
+      { layout: "full", srcs: ["triada_hero"], alts: ["Triada Health hero — employees page"] },
+      { layout: "half", srcs: ["triada_employers", "triada_brokers"], alts: ["Employers page", "Brokers page"] },
+      { layout: "full", srcs: ["triada_hrm"], alts: ["HRM page"] },
+      { layout: "full", srcs: ["triada_about"], alts: ["About page"] }
+    ]
+  }
+];
+
+function renderProject(id) {
+  var p    = projects[id];
+  var prev = (id > 0) ? id - 1 : null;
+  var next = (id < projects.length - 1) ? id + 1 : null;
+  var prevLink = (prev !== null)
+    ? "<a onclick=\"showPage('project'," + prev + ")\">&#8592; " + projects[prev].title + "</a>"
+    : "<span></span>";
+  var nextLink = (next !== null)
+    ? "<a onclick=\"showPage('project'," + next + ")\">" + projects[next].title + " &#8594;</a>"
+    : "<span></span>";
+  var imagesHtml = "";
+  if (p.images) {
+    imagesHtml += "<div class=\"project-images\">";
+    for (var ii = 0; ii < p.images.length; ii++) {
+      var block = p.images[ii];
+      if (block.layout === "full") {
+        imagesHtml += "<div class=\"project-img-full\"><img src=\"" + block.srcs[0] + "\" alt=\"" + block.alts[0] + "\"></div>";
+      } else if (block.layout === "half") {
+        imagesHtml += "<div class=\"project-img-half\">";
+        imagesHtml += "<img src=\"" + block.srcs[0] + "\" alt=\"" + block.alts[0] + "\">";
+        imagesHtml += "<img src=\"" + block.srcs[1] + "\" alt=\"" + block.alts[1] + "\">";
+        imagesHtml += "</div>";
+      }
+    }
+    imagesHtml += "</div>";
+  }
+
+  document.getElementById("project-content").innerHTML =
+    "<div class=\"project-back\" onclick=\"showPage('home')\">&#8592; back to work</div>" +
+    "<div class=\"project-label\">Case Study &middot; " + p.type + "</div>" +
+    "<div class=\"project-title\">" + p.title + "</div>" +
+    "<div class=\"project-meta\">" +
+      "<div class=\"project-meta-item\"><span>Role</span>" + p.role + "</div>" +
+      "<div class=\"project-meta-item\"><span>Company</span>" + p.company + "</div>" +
+      "<div class=\"project-meta-item\"><span>Type</span>" + p.type + "</div>" +
+    "</div>" +
+    "<hr class=\"project-divider\">" +
+    "<div class=\"project-section-title\">// the problem</div>" +
+    "<div class=\"project-body\"><p>" + p.problem + "</p></div>" +
+    "<div class=\"project-section-title\">// what I designed</div>" +
+    "<div class=\"project-body\"><p>" + p.solving + "</p></div>" +
+    "<div class=\"project-section-title\">// impact &amp; outcomes</div>" +
+    "<div class=\"project-body\"><p>" + p.impact + "</p></div>" +
+    "<div class=\"project-section-title\">// how I think about this work</div>" +
+    "<div class=\"project-body\"><p>" + p.process + "</p></div>" +
+    "<div class=\"project-ascii-banner\">" + p.ascii + "</div>" +
+    imagesHtml +
+    "<div class=\"project-nav\">" + prevLink + nextLink + "</div>";
+}
+
+function renderGrid() {
+  var html = "";
+  for (var i = 0; i < projects.length; i++) {
+    var p = projects[i];
+    html +=
+      "<div class=\"work-card\" onclick=\"showPage('project'," + i + ")\">" +
+        "<div class=\"work-card-num\">0" + (i + 1) + "</div>" +
+        "<div class=\"work-card-title\">" + p.title + "</div>" +
+        "<div class=\"work-card-type\">" + p.type + "</div>" +
+        "<div class=\"work-card-ascii\">" + p.ascii + "</div>" +
+        "<div class=\"work-card-arrow\">&#8594;</div>" +
+      "</div>";
+  }
+  document.getElementById("work-grid").innerHTML = html;
+}
+
+renderGrid();
+</script>
+</body>
+</html>
