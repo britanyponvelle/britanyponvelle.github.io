@@ -77,7 +77,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 .contact-links{display:flex;gap:1.5rem;font-size:.82rem;font-family:'Space Grotesk',sans-serif;flex-wrap:wrap;}
 .contact-links a{border-bottom:1px solid rgba(42,42,37,.25);padding-bottom:.1em;transition:border-color .2s;}
 .contact-links a:hover{border-color:var(--ink);}
-footer{text-align:center;padding:2.5rem;font-size:.7rem;font-family:'Space Mono',monospace;opacity:.35;letter-spacing:.06em;border-top:1px solid rgba(42,42,37,.1);}
+  .project-images{margin-top:3rem;}
+  .project-img-full{width:100%;margin-bottom:1.5rem;}
+  .project-img-full img{width:100%;height:auto;display:block;border-radius:4px;}
+  .project-img-half{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem;}
+  .project-img-half img{width:100%;height:auto;display:block;border-radius:4px;}text-align:center;padding:2.5rem;font-size:.7rem;font-family:'Space Mono',monospace;opacity:.35;letter-spacing:.06em;border-top:1px solid rgba(42,42,37,.1);}
 </style>
 </head>
 <body>
@@ -85,7 +89,7 @@ footer{text-align:center;padding:2.5rem;font-size:.7rem;font-family:'Space Mono'
 <nav>
   <div class="nav-name" onclick="showPage('home')">BRITANY CALLAHAN</div>
   <div class="nav-links">
-    <a onclick="showPage('home')">Work</a>
+    <a onclick="showPage('home');setTimeout(function(){var el=document.getElementById('work-grid');if(el)el.scrollIntoView({behavior:'smooth'});},50);">Work</a>
     <a onclick="showPage('about')">Me</a>
   </div>
 </nav>
@@ -529,11 +533,11 @@ var projects = [
     solving:"I designed separate user journeys for each. One website, three experiences.",
     impact:"Each audience got exactly the information they needed, nothing more.",
     process:"This project crystallized my approach to complex audience segmentation.",
-    images: [
-      { layout: "full", srcs: ["triada_hero.png"], alts: ["Triada Health hero — employees page"] },
-      { layout: "half", srcs: ["triada_Employers.png", "triada_Brokers.png"], alts: ["Employers page", "Brokers page"] },
-      { layout: "full", srcs: ["triada_hrm.png"], alts: ["HRM page"] },
-      { layout: "full", srcs: ["triada_about.png"], alts: ["About page"] }
+   images: [
+      { layout: "full", srcs: ["triada_hero"], alts: ["Triada Health hero — employees page"] },
+      { layout: "half", srcs: ["triada_employers", "triada_brokers"], alts: ["Employers page", "Brokers page"] },
+      { layout: "full", srcs: ["triada_hrm"], alts: ["HRM page"] },
+      { layout: "full", srcs: ["triada_about"], alts: ["About page"] }
     ]
   }
 ];
