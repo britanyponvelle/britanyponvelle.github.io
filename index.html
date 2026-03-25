@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>Britany Callahan</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -465,12 +465,11 @@ function scaleAscii() {
   wrap.style.height   = "";
   var natW = pre.scrollWidth;
   var natH = pre.scrollHeight;
-  var vpW  = window.innerWidth;
+  // Use clientWidth for Safari reliability — avoids scrollbar/viewport edge issues
+  var vpW  = document.documentElement.clientWidth;
   var vpH  = window.innerHeight * 0.75;
   if (!natW || !natH) return;
-  var isMobile = vpW < 600;
-  // Mobile: always scale to exact viewport width (no overflow, no gap)
-  // Desktop: scale to cover (whichever axis needs more)
+  var isMobile = vpW < 768;
   var scale   = isMobile ? (vpW / natW) : Math.max(vpW / natW, vpH / natH);
   var scaledW = natW * scale;
   var offsetX = (!isMobile && scaledW > vpW) ? -(scaledW - vpW) / 2 : 0;
@@ -497,7 +496,9 @@ renderScene(0);
 requestAnimationFrame(animate);
 window.addEventListener("load",   scaleAscii);
 window.addEventListener("resize", scaleAscii);
-setTimeout(scaleAscii, 300);
+window.addEventListener("orientationchange", function() { setTimeout(scaleAscii, 200); });
+setTimeout(scaleAscii, 100);
+setTimeout(scaleAscii, 400);
 setTimeout(scaleAscii, 800);
 
 function showPage(page, projectId) {
