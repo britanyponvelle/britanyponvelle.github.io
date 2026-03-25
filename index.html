@@ -103,7 +103,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
   </div>
   <div class="ticker-band">
     <div class="ticker-inner">
-      &nbsp;&nbsp;&mdash;&nbsp;&nbsp;Let’s build software people love to use&nbsp;&nbsp;&mdash;&nbsp;&nbsp;Let’s build software people love to use&nbsp;&nbsp;&mdash;&nbsp;&nbsp;Let’s build software people love to use&nbsp;&nbsp;&mdash;&nbsp;&nbsp;Let’s build software people love to use&nbsp;&nbsp;&mdash;&nbsp;&nbsp;Let’s build software people love to use&nbsp;&nbsp;&mdash;&nbsp;&nbsp;Let’s build software people love to use&nbsp;&nbsp;&mdash;&nbsp;&nbsp;Let’s build software people love to use&nbsp;&nbsp;&mdash;&nbsp;&nbsp;Let’s build software people love to use&nbsp;&nbsp;&mdash;&nbsp;&nbsp;Let’s build software people love to use&nbsp;&nbsp;&mdash;&nbsp;&nbsp;
+      &nbsp;&nbsp;&mdash;&nbsp;&nbsp;Let's make beautiful and helpful software together&nbsp;&nbsp;&mdash;&nbsp;&nbsp;Let's make beautiful and helpful software together&nbsp;&nbsp;&mdash;&nbsp;&nbsp;Let's make beautiful and helpful software together&nbsp;&nbsp;&mdash;&nbsp;&nbsp;Let's make beautiful and helpful software together&nbsp;&nbsp;&mdash;&nbsp;&nbsp;
     </div>
   </div>
   <div class="hero-text">
@@ -111,6 +111,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
     <div class="hero-sub">Staff product designer at Intuit QuickBooks &middot; Payments team.</div>
     <div class="hero-cta" onclick="showPage('about')">About me &rarr;</div>
   </div>
+  <div class="section-label">// selected work</div>
   <div class="work-grid" id="work-grid"></div>
   <footer>bponve20@gmail.com &nbsp;&middot;&nbsp;
     <a href="https://www.linkedin.com/in/britany-ponvelle/" target="_blank">LinkedIn</a>
@@ -249,16 +250,16 @@ var SUN = [
 ];
 
 var SKYLINE = [
-  "        ______        ____            ______        ________        ___            ________        ______        ",
-  "       |      |      |    |          |      |      |        |      |   |          |        |      |      |       ",
-  "   ____|      |______|    |____      |      |______|        |______|   |____      |        |______|      |____   ",
-  "  |    | [] []|      | [] |    |     | [] []|      |  [] [] |      | []|    |     |  [] [] |      | [] []|   |  ",
-  "  |    | [] []|      |    |    |     | [] []|      |        |      |   |    |     |  [] [] |      | [] []|   |  ",
-  "  |    |      |      | [] |    |     |      |      |  [] [] |      | []|    |     |        |      |      |   |  ",
-  "  |    | [] []|      |    |    |     | [] []|      |        |      |   |    |     |  [] [] |      | [] []|   |  ",
-  "  |    | [] []|      | [] |    |     | [] []|      |  [] [] |      | []|    |     |  [] [] |      | [] []|   |  ",
-  "  |    |      |      |    |    |     |      |      |        |      |   |    |     |        |      |      |   |  ",
-  "  |____|______|______|____|____|_____|______|______|________|______|___|____|_____|________|______|______|___|  ",
+  "         ___                 ___  ___          ___  ___  ___  ___                   ___  ___         ___  ___        ",
+  " ___    |   |    _________  |   ||   |  _     |   ||   ||   ||   |   _________     |   ||   |  ___  |   ||   |  ___ ",
+  "|   |___|   |___|         |_|   ||   |_| |____|   ||   ||   ||   |__|         |____|   ||   |_|   |_|   ||   |_|   |",
+  "|   |   |   |   | [=] [=] | |   ||   || |    |   ||   ||   ||   |  | [=] [=] |    |   ||   || [=] |   ||   || [=] |",
+  "|   |   |   |   | [=] [=] | |   ||   || |    |   ||   ||   ||   |  | [=] [=] |    |   ||   || [=] |   ||   || [=] |",
+  "|[=]|[=]|[=]|[=]| [=] [=] |_|[=]||[=]|| |  _|[=]||[=]||[=]||[=]|__| [=] [=] |____|[=]||[=]|| [=] |[=]||[=]|| [=] |",
+  "|[=]|[=]|[=]|[=]|           |[=]||[=]||/\\ | |[=]||[=]||[=]||[=]|  |     /\\    |   |[=]||[=]||  /\\ |[=]||[=]||  /\\ |",
+  "|[=]|[=]|[=]|[=]|   [=][=]  |[=]||[=]|/  \\| |[=]||[=]||[=]||[=]|  |    /  \\   |   |[=]||[=]| /  \\|[=]||[=]| /  \\|",
+  "|[=]|[=]|[=]|[=]|   [=][=]  |[=]||[=]/    \\ |[=]||[=]||[=]||[=]|  |   / HH \\  |   |[=]||[=]|/    |[=]||[=]|/    |",
+  "|___|___|___|___|_____________|___||__/______\\|___||___||___||___|__|__/______\\__|___|___||___|_________|___||___|______|",
   "=======================================================================================================================",
   "_______________________________________________________________________________________________________________________"
 ];
@@ -281,8 +282,9 @@ var SPRITE = [
   " '._________________' "
 ];
 
-var boatX    = SCENE_W + 10;
-var BOAT_SPEED = 6;
+var boatX      = SCENE_W + 10;
+var boat2X     = SCENE_W + 10 + SCENE_W * 0.6;
+var BOAT_SPEED = 12;
 var cloudX   = 0;
 var lastTime = null;
 
@@ -423,6 +425,34 @@ function renderScene(cOff) {
     allRows[absRow] = arr.join("");
   }
 
+  var col2 = Math.round(boat2X);
+  for (var li = 0; li < SPRITE.length; li++) {
+    var absRow = SPRITE_TOP + li;
+    if (absRow < 0 || absRow >= allRows.length) continue;
+    var line = SPRITE[li];
+    var arr  = (allRows[absRow] + " ".repeat(Math.max(0, SCENE_W - allRows[absRow].length))).split("");
+    if (li >= SPRITE_HULL_START) {
+      for (var ci = 0; ci < line.length; ci++) {
+        var idx = col2 + ci;
+        if (idx >= 0 && idx < arr.length) arr[idx] = line[ci];
+      }
+    } else {
+      var lEdge = SPRITE_MAST_COL - li;
+      var rEdge = SPRITE_MAST_COL + li;
+      for (var ci = lEdge + 1; ci < rEdge; ci++) {
+        var idx = col2 + ci;
+        if (idx >= 0 && idx < arr.length) arr[idx] = " ";
+      }
+      for (var ci = 0; ci < line.length; ci++) {
+        if (line[ci] !== " ") {
+          var idx = col2 + ci;
+          if (idx >= 0 && idx < arr.length) arr[idx] = line[ci];
+        }
+      }
+    }
+    allRows[absRow] = arr.join("");
+  }
+
   var pre = document.getElementById("ascii-scene-pre");
   if (pre) pre.textContent = allRows.join("\n");
 }
@@ -438,9 +468,12 @@ function scaleAscii() {
   var vpW  = window.innerWidth;
   var vpH  = window.innerHeight * 0.75;
   if (!natW || !natH) return;
-  var scale   = Math.max(vpW / natW, vpH / natH);
+  var isMobile = vpW < 600;
+  // Mobile: always scale to exact viewport width (no overflow, no gap)
+  // Desktop: scale to cover (whichever axis needs more)
+  var scale   = isMobile ? (vpW / natW) : Math.max(vpW / natW, vpH / natH);
   var scaledW = natW * scale;
-  var offsetX = (scaledW > vpW) ? -(scaledW - vpW) / 2 : 0;
+  var offsetX = (!isMobile && scaledW > vpW) ? -(scaledW - vpW) / 2 : 0;
   pre.style.transform       = "translateX(" + offsetX + "px) scale(" + scale + ")";
   pre.style.transformOrigin = "top left";
   wrap.style.height = (natH * scale) + "px";
@@ -453,7 +486,9 @@ function animate(ts) {
   cloudX -= 3 * dt;
   if (cloudX < -SCENE_W) cloudX += SCENE_W;
   boatX -= BOAT_SPEED * dt;
-  if (boatX < -(SPRITE[0].length + 5)) boatX = SCENE_W * 0.3;
+  if (boatX < -(SPRITE[0].length + 5)) boatX = SCENE_W + 10;
+  boat2X -= BOAT_SPEED * dt;
+  if (boat2X < -(SPRITE[0].length + 5)) boat2X = SCENE_W + 10;
   renderScene(cloudX);
   requestAnimationFrame(animate);
 }
@@ -527,16 +562,16 @@ var projects = [
     impact:"The redesign gave Entoro a digital identity matching their positioning.",
     process:"I started with IA, mapping all audience types before touching visual design." },
   { id:8, title:"Triada Health", type:"Website", role:"Strategy, Design, Front-end Dev", company:"Poetic Systems",
-    ascii:"  O   O\n /|\\ /|\\\n / \\ / \\",
+    ascii:"  + health +\n  /benefits\\\n  \\  for  /",
     problem:"Triada had three distinct audiences with very different needs and literacy levels.",
     solving:"I designed separate user journeys for each. One website, three experiences.",
     impact:"Each audience got exactly the information they needed, nothing more.",
     process:"This project crystallized my approach to complex audience segmentation.",
-   images: [
-      { layout: "full", srcs: ["triada_hero.png"], alts: ["Triada Health hero — employees page"] },
-      { layout: "half", srcs: ["triada_Employers.png", "triada_Brokers.png"], alts: ["Employers page", "Brokers page"] },
-      { layout: "full", srcs: ["triada_hrm.png"], alts: ["HRM page"] },
-      { layout: "full", srcs: ["triada_about.png"], alts: ["About page"] }
+    images: [
+      { layout: "full", srcs: ["triada_hero"], alts: ["Triada Health hero — employees page"] },
+      { layout: "half", srcs: ["triada_employers", "triada_brokers"], alts: ["Employers page", "Brokers page"] },
+      { layout: "full", srcs: ["triada_hrm"], alts: ["HRM page"] },
+      { layout: "full", srcs: ["triada_about"], alts: ["About page"] }
     ]
   }
 ];
