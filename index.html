@@ -27,7 +27,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 .ticker-band{width:100%;display:flex;align-items:center;overflow:hidden;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);background:var(--cream);white-space:nowrap;font-family:'Space Mono',monospace;font-size:10px;padding:.5rem 0;}
 .ticker-inner{display:inline-block;white-space:nowrap;animation:tickerScroll 36s linear infinite;color:var(--ink);letter-spacing:.05em;}
 @keyframes tickerScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-@keyframes sailBoat{0%{left:105%}100%{left:-10%}}
+  @media (max-width:768px) {
+    .ascii-scene { padding: 20px; background: var(--cream); }
+    .ascii-pre-wrap { border: 1px solid rgba(42,42,37,0.15); overflow: hidden; }
+  }
 .hero-text{text-align:center;padding:3.5rem 2rem 2rem;}
 .hero-title{font-size:clamp(1.6rem,4vw,2.6rem);font-weight:600;font-family:'Space Grotesk',sans-serif;letter-spacing:-.02em;line-height:1.2;margin-bottom:1rem;}
 .hero-sub{font-size:.9rem;font-family:'Space Grotesk',sans-serif;font-weight:300;color:var(--ink-light);line-height:1.9;max-width:520px;margin:0 auto 2rem;}
@@ -470,9 +473,10 @@ function scaleAscii() {
   var vpH  = window.innerHeight * 0.75;
   if (!natW || !natH) return;
   var isMobile = vpW < 768;
-  var scale   = isMobile ? (vpW / natW) : Math.max(vpW / natW, vpH / natH);
-  var scaledW = natW * scale;
-  var offsetX = (!isMobile && scaledW > vpW) ? -(scaledW - vpW) / 2 : 0;
+  var padding  = isMobile ? 40 : 0; // 20px each side on mobile
+  var scale    = isMobile ? ((vpW - padding) / natW) : Math.max(vpW / natW, vpH / natH);
+  var scaledW  = natW * scale;
+  var offsetX  = (!isMobile && scaledW > vpW) ? -(scaledW - vpW) / 2 : 0;
   pre.style.transform       = "translateX(" + offsetX + "px) scale(" + scale + ")";
   pre.style.transformOrigin = "top left";
   wrap.style.height = (natH * scale) + "px";
