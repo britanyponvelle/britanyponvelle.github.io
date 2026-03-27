@@ -20,23 +20,23 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 .page{display:none;min-height:100vh;}
 .page.active{display:block;}
 #home{padding-top:60px;}
-.ascii-scene{width:100%;overflow:hidden;background:var(--cream);position:relative;}
-.ascii-pre-wrap{width:100%;overflow:hidden;display:block;position:relative;}
+.ascii-scene{width:100%;overflow:hidden;background:var(--cream);position:relative;display:block;}
+.ascii-pre-wrap{width:100%;overflow:hidden;display:block;position:relative;margin:0;padding:0;}
 .ascii-pre{font-family:'Space Mono',monospace;font-size:10px;line-height:1.5;color:var(--ink);white-space:pre;display:block;user-select:none;padding:0;margin:0;transform-origin:top left;letter-spacing:.05em;}
-  .scene-label{position:absolute;top:28%;left:50%;transform:translate(-50%, calc(-50% + 20px));font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:300;letter-spacing:.25em;color:var(--ink);text-transform:uppercase;pointer-events:none;z-index:5;white-space:nowrap;}
+.scene-label{position:absolute;top:28%;left:50%;transform:translate(-50%,calc(-50% + 20px));font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:300;letter-spacing:.25em;color:var(--ink);text-transform:uppercase;pointer-events:none;z-index:5;white-space:nowrap;}
 .ticker-band{width:100%;display:flex;align-items:center;overflow:hidden;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);background:var(--cream);white-space:nowrap;font-family:'Space Mono',monospace;font-size:10px;padding:.5rem 0;}
 .ticker-inner{display:inline-block;white-space:nowrap;animation:tickerScroll 36s linear infinite;color:var(--ink);letter-spacing:.05em;}
 @keyframes tickerScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-  @media (max-width:768px) {
-    .ascii-scene { padding: 20px; background: var(--cream); }
-    .ascii-pre-wrap { border: 1px solid rgba(42,42,37,0.15); overflow: hidden; }
-  }
+@keyframes sailBoat{0%{left:105%}100%{left:-10%}}
+@media(max-width:768px){
+  .ascii-scene{padding:20px;background:var(--cream);}
+  .ascii-pre-wrap{border:1px solid rgba(42,42,37,0.15);overflow:hidden;}
+}
 .hero-text{text-align:center;padding:3.5rem 2rem 2rem;}
 .hero-title{font-size:clamp(1.6rem,4vw,2.6rem);font-weight:600;font-family:'Space Grotesk',sans-serif;letter-spacing:-.02em;line-height:1.2;margin-bottom:1rem;}
 .hero-sub{font-size:.9rem;font-family:'Space Grotesk',sans-serif;font-weight:300;color:var(--ink-light);line-height:1.9;max-width:520px;margin:0 auto 2rem;}
 .hero-cta{display:inline-block;border:1px solid var(--ink);padding:.6rem 1.6rem;font-size:.75rem;font-family:'Space Mono',monospace;letter-spacing:.1em;transition:background .2s,color .2s;cursor:pointer;}
 .hero-cta:hover{background:var(--ink);color:var(--cream);}
-.section-label{text-align:center;font-size:.7rem;font-family:'Space Mono',monospace;letter-spacing:.15em;opacity:.45;padding:3rem 0 1.5rem;text-transform:uppercase;}
 .work-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:0;max-width:1200px;margin:0 auto;border-top:1px solid rgba(42,42,37,.12);border-left:1px solid rgba(42,42,37,.12);}
 .work-card{border-right:1px solid rgba(42,42,37,.12);border-bottom:1px solid rgba(42,42,37,.12);padding:2rem;cursor:pointer;transition:background .2s;position:relative;overflow:hidden;}
 .work-card:hover{background:rgba(42,42,37,.04);}
@@ -64,10 +64,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 .project-nav{display:flex;justify-content:space-between;margin-top:4rem;padding-top:2rem;border-top:1px solid rgba(42,42,37,.12);font-size:.72rem;font-family:'Space Mono',monospace;}
 .project-nav a{opacity:.5;cursor:pointer;transition:opacity .2s;}
 .project-nav a:hover{opacity:1;}
+.project-images{margin-top:3rem;}
+.project-img-full{width:100%;margin-bottom:1.5rem;}
+.project-img-full img{width:100%;height:auto;display:block;border-radius:4px;}
+.project-img-half{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem;}
+.project-img-half img{width:100%;height:auto;display:block;border-radius:4px;}
 #about{padding-top:80px;}
 .about-inner{max-width:700px;margin:0 auto;padding:4rem 2rem 6rem;}
-.about-ascii{text-align:center;font-family:'Space Mono',monospace;font-size:9px;line-height:1.3;opacity:.2;margin-bottom:3rem;white-space:pre;}
-.about-title{font-size:clamp(1.4rem,3vw,2rem);font-family:'Space Grotesk',sans-serif;font-weight:600;letter-spacing:-.02em;margin-bottom:1.5rem;line-height:1.2;}
+.about-title{font-size:clamp(1.4rem,3vw,2rem);font-family:'Space Grotesk',sans-serif;font-weight:600;letter-spacing:-.02em;margin-bottom:1.5rem;line-height:1.3;}
 .about-body{font-size:.95rem;font-family:'Space Grotesk',sans-serif;font-weight:300;line-height:1.95;color:rgba(42,42,37,.75);}
 .about-body p{margin-bottom:1.4rem;}
 .about-body strong{color:var(--ink);font-weight:500;}
@@ -80,11 +84,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 .contact-links{display:flex;gap:1.5rem;font-size:.82rem;font-family:'Space Grotesk',sans-serif;flex-wrap:wrap;}
 .contact-links a{border-bottom:1px solid rgba(42,42,37,.25);padding-bottom:.1em;transition:border-color .2s;}
 .contact-links a:hover{border-color:var(--ink);}
-  .project-images{margin-top:3rem;}
-  .project-img-full{width:100%;margin-bottom:1.5rem;}
-  .project-img-full img{width:100%;height:auto;display:block;border-radius:4px;}
-  .project-img-half{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem;}
-  .project-img-half img{width:100%;height:auto;display:block;border-radius:4px;}text-align:center;padding:2.5rem;font-size:.7rem;font-family:'Space Mono',monospace;opacity:.35;letter-spacing:.06em;border-top:1px solid rgba(42,42,37,.1);}
 </style>
 </head>
 <body>
@@ -106,21 +105,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
   </div>
   <div class="ticker-band">
     <div class="ticker-inner">
-      &nbsp;&nbsp;&mdash;&nbsp;&nbsp;Let's make beautiful and helpful software together&nbsp;&nbsp;&mdash;&nbsp;&nbsp;Let's make beautiful and helpful software together&nbsp;&nbsp;&mdash;&nbsp;&nbsp;Let's make beautiful and helpful software together&nbsp;&nbsp;&mdash;&nbsp;&nbsp;Let's make beautiful and helpful software together&nbsp;&nbsp;&mdash;&nbsp;&nbsp;
+      &nbsp;&nbsp;&mdash;&nbsp;&nbsp;Let's build software people love to use&nbsp;&nbsp;&mdash;&nbsp;&nbsp;Let's build software people love to use&nbsp;&nbsp;&mdash;&nbsp;&nbsp;Let's build software people love to use&nbsp;&nbsp;&mdash;&nbsp;&nbsp;Let's build software people love to use&nbsp;&nbsp;&mdash;&nbsp;&nbsp;Let's build software people love to use&nbsp;&nbsp;&mdash;&nbsp;&nbsp;Let's build software people love to use&nbsp;&nbsp;&mdash;&nbsp;&nbsp;
     </div>
   </div>
   <div class="hero-text">
     <div class="hero-title">Design that helps people.<br>Built with joy.</div>
-    <div class="hero-sub">Staff product designer at Intuit QuickBooks &middot; Payments team.</div>
     <div class="hero-cta" onclick="showPage('about')">About me &rarr;</div>
   </div>
-  <div class="section-label">// selected work</div>
   <div class="work-grid" id="work-grid"></div>
-  <footer>bponve20@gmail.com &nbsp;&middot;&nbsp;
-    <a href="https://www.linkedin.com/in/britany-ponvelle/" target="_blank">LinkedIn</a>
-    &nbsp;&middot;&nbsp;
-    <a href="https://dribbble.com/britanyponvelle" target="_blank">Dribbble</a>
-  </footer>
 </div>
 
 <div id="project" class="page">
@@ -129,28 +121,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 
 <div id="about" class="page">
   <div class="about-inner">
-    <div class="about-ascii">    ___
-   (o_o)
-   / | \
-  /  |  \</div>
-    <div class="about-title">I believe the best products<br>are built in joy.</div>
+    <div class="about-title">Hey, I'm Britany &mdash; a product designer on the Payments team at Intuit QuickBooks.</div>
     <div class="about-body">
-      <p>Hey, I'm Britany. Staff product designer at <strong>Intuit QuickBooks</strong>, Payments team.</p>
-      <p>I've spent my career across fintech, healthcare, energy, and enterprise software. The most durable products come from teams <strong>genuinely excited about the problem they're solving</strong>.</p>
-      <p>I obsess over user needs. I read support tickets for fun. A designer's job is to be the loudest voice in the room for the person who isn't in the room.</p>
-      <p>I'm looking for a team that finds <strong>joy in the work</strong> and genuinely cares about the people using what they build.</p>
-      <p>When I'm not designing, I'm listening to an audiobook, working on pottery, or taking ridiculously long walks through Wisconsin.</p>
+      <p>I've spent my career designing across fintech, healthcare, energy, and enterprise software. The common thread? The best products come from teams that are genuinely excited about the problems they're solving.</p>
+      <p>I believe good, responsible design should actually improve people's lives. It should be intentional. Useful. Human. I design to help people &mdash; whether that's bringing moments of delight, making complex tasks feel simple, or connecting people to what they need, faster.</p>
+      <p>When I'm not designing, you'll probably find me deep into an audiobook, working on a new pottery piece, or taking a very long walk (longer than necessary, always).</p>
+      <p>Currently designing at Intuit. Case studies available upon request.</p>
     </div>
-    <div class="about-values">
-      <div class="about-values-title">// what I bring</div>
-      <div class="value-item"><span class="value-dot">+</span><span><strong>User obsession</strong> &mdash; I don't guess. I watch, listen, and ask.</span></div>
-      <div class="value-item"><span class="value-dot">+</span><span><strong>Systems thinking</strong> &mdash; Edge cases are features, not afterthoughts.</span></div>
-      <div class="value-item"><span class="value-dot">+</span><span><strong>Cross-functional fluency</strong> &mdash; PMs, engineers, strategists, writers, devs.</span></div>
-      <div class="value-item"><span class="value-dot">+</span><span><strong>Mission-driven</strong> &mdash; Software that helps people, not just makes money.</span></div>
-      <div class="value-item"><span class="value-dot">+</span><span><strong>Joyful culture</strong> &mdash; Kind, curious, excited teams.</span></div>
-    </div>
+
     <div class="about-contact">
-      <div class="about-contact-title">// let's talk</div>
+      <div class="about-contact-title">let's talk</div>
       <div class="contact-links">
         <a href="mailto:bponve20@gmail.com">bponve20@gmail.com</a>
         <a href="https://www.linkedin.com/in/britany-ponvelle/" target="_blank">LinkedIn</a>
@@ -158,92 +138,28 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
       </div>
     </div>
   </div>
-  <footer>&copy; Britany Callahan &middot; Made with joy</footer>
 </div>
 
 <script>
 var SKY_ROWS = 29;
-var SCENE_W  = (window.innerWidth < 600) ? 60 : 360;
+var SCENE_W  = (window.innerWidth < 768) ? 60 : 360;
 var W        = SCENE_W;
-var BAY_ABS    = SKY_ROWS + 2;
-var SPRITE_TOP = BAY_ABS - 10;
+var BAY_ABS  = SKY_ROWS + 2;
+var SPRITE_TOP  = BAY_ABS - 10;
+var SPRITE_HULL_START = 10;
+var SPRITE_MAST_COL   = 9;
 
 var CLOUD_DEFS = [
-  [2, Math.floor(W*0.01), [
-    "   ._--._.   ",
-    " .(-.-.-.-)  ",
-    "(-.-.-.-.-.-)",
-    " `---------` "
-  ]],
-  [3, Math.floor(W*0.09), [
-    "     ._--._.    .--._  ",
-    "   .(-.:-.:-).(-.:.-.)",
-    "  (-.(-.:.:.:.:.:.:.-.-)",
-    " (-.-(-.:.:.:.:.:.:.-.-.",
-    "(-.-.-.-.:.:.:.:.:.-.-.-)",
-    "(-.-.-.-.-.:.:.:.-.-.-.-)",
-    " `(-.-.-.-.-.-.-.-.-.-)` "
-  ]],
-  [4, Math.floor(W*0.32), [
-    "  ._--._   ",
-    " (-.:.:-.)  ",
-    "(-.:.:.:.-)  ",
-    "(-.:.:.:.:.-)",
-    " `(-.-.-.--)` "
-  ]],
-  [2, Math.floor(W*0.48), [
-    "      ._--._.      ._--._   ",
-    "    .(-.:.:-.)-.-(-.:.:.-)  ",
-    "   (-.(-.:.:.:.:.:.:.:-.-.) ",
-    "  (-.-(-.:.:.:.:.:.:.:.-.-.) ",
-    " (-.-.(-.:.:.:.:.:.:.:.-.-.-)",
-    "(-.-.-.-.:.:.:.:.:.:.-.-.-.-)",
-    " `(-.-.-.-.-.-.-.-.-.-.--..)` "
-  ]],
-  [5, Math.floor(W*0.73), [
-    "  ._--._.  ",
-    " (-.:.:.-)  ",
-    "(-.:.:.:.-)  ",
-    " `(-.-.---)` "
-  ]],
-  [3, Math.floor(W*0.82), [
-    "   ._--._.   ",
-    " .(-.:.:-.)  ",
-    "(-.(-.:.:.:-.) ",
-    "(-.-.-.:.:.:.-.)",
-    " `(-.-.-.-.--.)` "
-  ]],
-  [2, Math.floor(W*0.01)+W, [
-    "   ._--._.   ",
-    " .(-.-.-.-)  ",
-    "(-.-.-.-.-.-)",
-    " `---------` "
-  ]],
-  [3, Math.floor(W*0.09)+W, [
-    "     ._--._.    .--._  ",
-    "   .(-.:-.:-).(-.:.-.)",
-    "  (-.(-.:.:.:.:.:.:.-.-)",
-    " (-.-(-.:.:.:.:.:.:.-.-.",
-    "(-.-.-.-.:.:.:.:.:.-.-.-)",
-    "(-.-.-.-.-.:.:.:.-.-.-.-)",
-    " `(-.-.-.-.-.-.-.-.-.-)` "
-  ]],
-  [4, Math.floor(W*0.32)+W, [
-    "  ._--._   ",
-    " (-.:.:-.)  ",
-    "(-.:.:.:.-)  ",
-    "(-.:.:.:.:.-)",
-    " `(-.-.-.--)` "
-  ]],
-  [2, Math.floor(W*0.48)+W, [
-    "      ._--._.      ._--._   ",
-    "    .(-.:.:-.)-.-(-.:.:.-)  ",
-    "   (-.(-.:.:.:.:.:.:.:-.-.) ",
-    "  (-.-(-.:.:.:.:.:.:.:.-.-.) ",
-    " (-.-.(-.:.:.:.:.:.:.:.-.-.-)",
-    "(-.-.-.-.:.:.:.:.:.:.-.-.-.-)",
-    " `(-.-.-.-.-.-.-.-.-.-.--..)` "
-  ]]
+  [2, Math.floor(W*0.01), ["   ._--._.   "," .(-.-.-.-)  ","(-.-.-.-.-.-)"," `---------` "]],
+  [3, Math.floor(W*0.09), ["     ._--._.    .--._  ","   .(-.:-.:-).(-.:.-.)"," (-.(-.:.:.:.:.:.:.-.-)"," (-.-(-.:.:.:.:.:.:.-.-.",  "(-.-.-.-.:.:.:.:.:.-.-.-)", "(-.-.-.-.-.:.:.:.-.-.-.-)", " `(-.-.-.-.-.-.-.-.-.-)` "]],
+  [4, Math.floor(W*0.32), ["  ._--._   "," (-.:.:-.)  ","(-.:.:.:.-)  ","(-.:.:.:.:.-)"," `(-.-.-.--)` "]],
+  [2, Math.floor(W*0.48), ["      ._--._.      ._--._   ","    .(-.:.:-.)-.-(-.:.:.-)  ","   (-.(-.:.:.:.:.:.:.:-.-.) ","  (-.-(-.:.:.:.:.:.:.:.-.-.) "," (-.-.(-.:.:.:.:.:.:.:.-.-.-)", "(-.-.-.-.:.:.:.:.:.:.-.-.-.-)", " `(-.-.-.-.-.-.-.-.-.-.--..)` "]],
+  [5, Math.floor(W*0.73), ["  ._--._.  "," (-.:.:.-)  ","(-.:.:.:.-)  "," `(-.-.---)` "]],
+  [3, Math.floor(W*0.82), ["   ._--._.   "," .(-.:.:-.)  ","(-.(-.:.:.:-.) ","(-.-.-.:.:.:.-.)", " `(-.-.-.-.--.)` "]],
+  [2, Math.floor(W*0.01)+W, ["   ._--._.   "," .(-.-.-.-)  ","(-.-.-.-.-.-)"," `---------` "]],
+  [3, Math.floor(W*0.09)+W, ["     ._--._.    .--._  ","   .(-.:-.:-).(-.:.-.)"," (-.(-.:.:.:.:.:.:.-.-)"," (-.-(-.:.:.:.:.:.:.-.-.", "(-.-.-.-.:.:.:.:.:.-.-.-)", "(-.-.-.-.-.:.:.:.-.-.-.-)", " `(-.-.-.-.-.-.-.-.-.-)` "]],
+  [4, Math.floor(W*0.32)+W, ["  ._--._   "," (-.:.:-.)  ","(-.:.:.:.-)  ","(-.:.:.:.:.-)"," `(-.-.-.--)` "]],
+  [2, Math.floor(W*0.48)+W, ["      ._--._.      ._--._   ","    .(-.:.:-.)-.-(-.:.:.-)  ","   (-.(-.:.:.:.:.:.:.:-.-.) ","  (-.-(-.:.:.:.:.:.:.:.-.-.) "," (-.-.(-.:.:.:.:.:.:.:.-.-.-)", "(-.-.-.-.:.:.:.:.:.:.-.-.-.-)", " `(-.-.-.-.-.-.-.-.-.-.--..)` "]]
 ];
 
 var SUN = [
@@ -253,22 +169,20 @@ var SUN = [
 ];
 
 var SKYLINE = [
-  "         ___                 ___  ___          ___  ___  ___  ___                   ___  ___         ___  ___        ",
-  " ___    |   |    _________  |   ||   |  _     |   ||   ||   ||   |   _________     |   ||   |  ___  |   ||   |  ___ ",
-  "|   |___|   |___|         |_|   ||   |_| |____|   ||   ||   ||   |__|         |____|   ||   |_|   |_|   ||   |_|   |",
-  "|   |   |   |   | [=] [=] | |   ||   || |    |   ||   ||   ||   |  | [=] [=] |    |   ||   || [=] |   ||   || [=] |",
-  "|   |   |   |   | [=] [=] | |   ||   || |    |   ||   ||   ||   |  | [=] [=] |    |   ||   || [=] |   ||   || [=] |",
-  "|[=]|[=]|[=]|[=]| [=] [=] |_|[=]||[=]|| |  _|[=]||[=]||[=]||[=]|__| [=] [=] |____|[=]||[=]|| [=] |[=]||[=]|| [=] |",
-  "|[=]|[=]|[=]|[=]|           |[=]||[=]||/\\ | |[=]||[=]||[=]||[=]|  |     /\\    |   |[=]||[=]||  /\\ |[=]||[=]||  /\\ |",
-  "|[=]|[=]|[=]|[=]|   [=][=]  |[=]||[=]|/  \\| |[=]||[=]||[=]||[=]|  |    /  \\   |   |[=]||[=]| /  \\|[=]||[=]| /  \\|",
-  "|[=]|[=]|[=]|[=]|   [=][=]  |[=]||[=]/    \\ |[=]||[=]||[=]||[=]|  |   / HH \\  |   |[=]||[=]|/    |[=]||[=]|/    |",
-  "|___|___|___|___|_____________|___||__/______\\|___||___||___||___|__|__/______\\__|___|___||___|_________|___||___|______|",
+  "        ______        ____            ______        ________        ___            ________        ______        ",
+  "       |      |      |    |          |      |      |        |      |   |          |        |      |      |       ",
+  "   ____|      |______|    |____      |      |______|        |______|   |____      |        |______|      |____   ",
+  "  |    | [] []|      | [] |    |     | [] []|      |  [] [] |      | []|    |     |  [] [] |      | [] []|   |  ",
+  "  |    | [] []|      |    |    |     | [] []|      |        |      |   |    |     |  [] [] |      | [] []|   |  ",
+  "  |    |      |      | [] |    |     |      |      |  [] [] |      | []|    |     |        |      |      |   |  ",
+  "  |    | [] []|      |    |    |     | [] []|      |        |      |   |    |     |  [] [] |      | [] []|   |  ",
+  "  |    | [] []|      | [] |    |     | [] []|      |  [] [] |      | []|    |     |  [] [] |      | [] []|   |  ",
+  "  |    |      |      |    |    |     |      |      |        |      |   |    |     |        |      |      |   |  ",
+  "  |____|______|______|____|____|_____|______|______|________|______|___|____|_____|________|______|______|___|  ",
   "=======================================================================================================================",
   "_______________________________________________________________________________________________________________________"
 ];
 
-var SPRITE_HULL_START = 10;
-var SPRITE_MAST_COL   = 9;
 var SPRITE = [
   "         |>>>         ",
   "         |            ",
@@ -288,19 +202,8 @@ var SPRITE = [
 var boatX      = SCENE_W + 10;
 var boat2X     = SCENE_W + 10 + SCENE_W * 0.6;
 var BOAT_SPEED = 12;
-var cloudX   = 0;
-var lastTime = null;
-
-function overwriteAt(row, pos, str) {
-  if (pos + str.length < 0 || pos >= SCENE_W) return row;
-  var arr = (row + " ".repeat(Math.max(0, SCENE_W - row.length))).split("");
-  for (var i = 0; i < str.length; i++) {
-    var idx = pos + i;
-    if (idx < 0 || idx >= arr.length) continue;
-    arr[idx] = str[i];
-  }
-  return arr.join("");
-}
+var cloudX     = 0;
+var lastTime   = null;
 
 function pad(s, w) {
   if (s.length >= w) return s.slice(0, w);
@@ -309,8 +212,7 @@ function pad(s, w) {
 
 function insertAt(row, pos, str) {
   if (pos + str.length < 0 || pos >= SCENE_W) return row;
-  var needed = Math.max(0, SCENE_W - row.length);
-  var arr = (row + " ".repeat(needed)).split("");
+  var arr = (row + " ".repeat(Math.max(0, SCENE_W - row.length))).split("");
   for (var i = 0; i < str.length; i++) {
     var idx = pos + i;
     if (idx < 0 || idx >= arr.length) continue;
@@ -345,9 +247,7 @@ function buildSkyRows(off) {
   }
   for (var ci = 0; ci < CLOUD_DEFS.length; ci++) {
     var cd = CLOUD_DEFS[ci];
-    var startRow = cd[0];
-    var col      = cd[1] + Math.round(off);
-    var lines    = cd[2];
+    var startRow = cd[0], col = cd[1] + Math.round(off), lines = cd[2];
     for (var li = 0; li < lines.length; li++) {
       var cr = startRow + li;
       if (cr < SKY_ROWS) rows[cr] = insertAt(rows[cr], col, lines[li]);
@@ -363,8 +263,7 @@ function buildStaticRows() {
   var wA = "~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ . ";
   var wB = ". ~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ ";
   for (var r = 0; r < 10; r++) {
-    var wave = "";
-    var src  = (r % 2 === 0) ? wA : wB;
+    var wave = "", src = (r % 2 === 0) ? wA : wB;
     while (wave.length < W + src.length) wave += src;
     rows.push(pad(wave, W));
   }
@@ -372,12 +271,9 @@ function buildStaticRows() {
   var wD = ". ~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ ";
   var wE = "^~^~ ^~^~ ^~^~ ^~^~ ^~^~ ^~^~ ^~^~ ^~^~ ^~^~ ^~^~ ^~^~ ";
   var wF = "~ . ~ ~ . ~ ~ . ~ ~ . ~ ~ . ~ ~ . ~ ~ . ~ ~ . ~ ~ . ~ ~ ";
-  var sC = "", sD = "", sE = "", sF = "";
-  while (sC.length < W + 60) { sC += wC; sD += wD; sE += wE; sF += wF; }
-  rows.push(pad(sC, W));
-  rows.push(pad(sD, W));
-  rows.push(pad(sE, W));
-  rows.push(pad(sF, W));
+  var sC="",sD="",sE="",sF="";
+  while (sC.length < W+60){sC+=wC;sD+=wD;sE+=wE;sF+=wF;}
+  rows.push(pad(sC,W)); rows.push(pad(sD,W)); rows.push(pad(sE,W)); rows.push(pad(sF,W));
   return rows;
 }
 
@@ -388,19 +284,14 @@ function stampSkyline(allRows) {
   for (var li = 0; li < SKYLINE.length; li++) {
     var absRow = startRow + li;
     if (absRow < 0 || absRow >= allRows.length) continue;
-    var line   = SKYLINE[li];
-    var tiled  = "";
+    var line = SKYLINE[li], tiled = "";
     while (tiled.length < SCENE_W + line.length) tiled += line;
     allRows[absRow] = tiled.slice(0, SCENE_W);
   }
 }
 
-function renderScene(cOff) {
-  var skyRows = buildSkyRows(cOff);
-  var allRows = skyRows.concat(staticRows.slice());
-  stampSkyline(allRows);
-
-  var col = Math.round(boatX);
+function stampBoat(allRows, bx) {
+  var col = Math.round(bx);
   for (var li = 0; li < SPRITE.length; li++) {
     var absRow = SPRITE_TOP + li;
     if (absRow < 0 || absRow >= allRows.length) continue;
@@ -412,8 +303,7 @@ function renderScene(cOff) {
         if (idx >= 0 && idx < arr.length) arr[idx] = line[ci];
       }
     } else {
-      var lEdge = SPRITE_MAST_COL - li;
-      var rEdge = SPRITE_MAST_COL + li;
+      var lEdge = SPRITE_MAST_COL - li, rEdge = SPRITE_MAST_COL + li;
       for (var ci = lEdge + 1; ci < rEdge; ci++) {
         var idx = col + ci;
         if (idx >= 0 && idx < arr.length) arr[idx] = " ";
@@ -427,35 +317,14 @@ function renderScene(cOff) {
     }
     allRows[absRow] = arr.join("");
   }
+}
 
-  var col2 = Math.round(boat2X);
-  for (var li = 0; li < SPRITE.length; li++) {
-    var absRow = SPRITE_TOP + li;
-    if (absRow < 0 || absRow >= allRows.length) continue;
-    var line = SPRITE[li];
-    var arr  = (allRows[absRow] + " ".repeat(Math.max(0, SCENE_W - allRows[absRow].length))).split("");
-    if (li >= SPRITE_HULL_START) {
-      for (var ci = 0; ci < line.length; ci++) {
-        var idx = col2 + ci;
-        if (idx >= 0 && idx < arr.length) arr[idx] = line[ci];
-      }
-    } else {
-      var lEdge = SPRITE_MAST_COL - li;
-      var rEdge = SPRITE_MAST_COL + li;
-      for (var ci = lEdge + 1; ci < rEdge; ci++) {
-        var idx = col2 + ci;
-        if (idx >= 0 && idx < arr.length) arr[idx] = " ";
-      }
-      for (var ci = 0; ci < line.length; ci++) {
-        if (line[ci] !== " ") {
-          var idx = col2 + ci;
-          if (idx >= 0 && idx < arr.length) arr[idx] = line[ci];
-        }
-      }
-    }
-    allRows[absRow] = arr.join("");
-  }
-
+function renderScene(cOff) {
+  var skyRows = buildSkyRows(cOff);
+  var allRows = skyRows.concat(staticRows.slice());
+  stampSkyline(allRows);
+  stampBoat(allRows, boatX);
+  stampBoat(allRows, boat2X);
   var pre = document.getElementById("ascii-scene-pre");
   if (pre) pre.textContent = allRows.join("\n");
 }
@@ -468,12 +337,11 @@ function scaleAscii() {
   wrap.style.height   = "";
   var natW = pre.scrollWidth;
   var natH = pre.scrollHeight;
-  // Use clientWidth for Safari reliability — avoids scrollbar/viewport edge issues
   var vpW  = document.documentElement.clientWidth;
   var vpH  = window.innerHeight * 0.75;
   if (!natW || !natH) return;
   var isMobile = vpW < 768;
-  var padding  = isMobile ? 40 : 0; // 20px each side on mobile
+  var padding  = isMobile ? 40 : 0;
   var scale    = isMobile ? ((vpW - padding) / natW) : Math.max(vpW / natW, vpH / natH);
   var scaledW  = natW * scale;
   var offsetX  = (!isMobile && scaledW > vpW) ? -(scaledW - vpW) / 2 : 0;
@@ -498,7 +366,7 @@ function animate(ts) {
 
 renderScene(0);
 requestAnimationFrame(animate);
-window.addEventListener("load",   scaleAscii);
+window.addEventListener("load", scaleAscii);
 window.addEventListener("resize", scaleAscii);
 window.addEventListener("orientationchange", function() { setTimeout(scaleAscii, 200); });
 setTimeout(scaleAscii, 100);
@@ -507,14 +375,10 @@ setTimeout(scaleAscii, 800);
 
 function showPage(page, projectId) {
   var pages = document.querySelectorAll(".page");
-  for (var i = 0; i < pages.length; i++) {
-    pages[i].classList.remove("active");
-  }
+  for (var i = 0; i < pages.length; i++) pages[i].classList.remove("active");
   document.getElementById(page).classList.add("active");
   window.scrollTo(0, 0);
-  if (page === "project" && projectId !== undefined) {
-    renderProject(projectId);
-  }
+  if (page === "project" && projectId !== undefined) renderProject(projectId);
 }
 
 var projects = [
@@ -547,50 +411,15 @@ var projects = [
     problem:"WillScot needed an internal brand connecting thousands of employees to shared purpose.",
     solving:"The conceptual anchor was we, meaning every individual contributes to the experience.",
     impact:"The campaign rolled out across video, print, digital, signage, and a logo system.",
-    process:"Employees can tell when messaging is performative. I rooted everything in the concrete." },
-  { id:5, title:"Marathon Petroleum Corporation", type:"Website", role:"Lead Designer", company:"BrandExtract",
-    ascii:"  /--MPC--\\\n  | refine |\n  \\-------/",
-    problem:"Marathon needed a presence reflecting their scale while remaining accessible.",
-    solving:"I owned the full visual design, creating clear hierarchy for multiple audience types.",
-    impact:"An interactive operations map gave users a spatial understanding of MPC nationally.",
-    process:"Good information architecture is invisible. Users should never feel lost." },
-  { id:6, title:"Western LNG", type:"Branding + Website", role:"Design, UX, Front-end Dev", company:"BrandExtract",
-    ascii:"  ~ LNG ~\n  export\n  .flow.",
-    problem:"Western LNG needed a brand to establish credibility with infrastructure investors.",
-    solving:"I took on brand design, UX, and front-end development.",
-    impact:"The resulting brand communicated scale, precision, and responsibility.",
-    process:"Industrial audiences reward close reading. I designed hierarchies that honor that." },
-  { id:7, title:"Entoro Capital", type:"Website", role:"IA, UX, Visual Design, Front-end Dev", company:"Poetic Systems",
-    ascii:"  [$$$]\n  invest\n  /bank\\",
-    problem:"Entoro wanted to differentiate as a technology-forward investment bank.",
-    solving:"I owned the full project: IA, UX, visual design, and front-end development.",
-    impact:"The redesign gave Entoro a digital identity matching their positioning.",
-    process:"I started with IA, mapping all audience types before touching visual design." },
-  { id:8, title:"Triada Health", type:"Website", role:"Strategy, Design, Front-end Dev", company:"Poetic Systems",
-    ascii:"  + health +\n  /benefits\\\n  \\  for  /",
-    problem:"Triada had three distinct audiences with very different needs and literacy levels.",
-    solving:"I designed separate user journeys for each. One website, three experiences.",
-    impact:"Each audience got exactly the information they needed, nothing more.",
-    process:"This project crystallized my approach to complex audience segmentation.",
-    images: [
-      { layout: "full", srcs: ["triada_hero"], alts: ["Triada Health hero — employees page"] },
-      { layout: "half", srcs: ["triada_employers", "triada_brokers"], alts: ["Employers page", "Brokers page"] },
-      { layout: "full", srcs: ["triada_hrm"], alts: ["HRM page"] },
-      { layout: "full", srcs: ["triada_about"], alts: ["About page"] }
-    ]
-  }
+    process:"Employees can tell when messaging is performative. I rooted everything in the concrete." }
 ];
 
 function renderProject(id) {
   var p    = projects[id];
   var prev = (id > 0) ? id - 1 : null;
   var next = (id < projects.length - 1) ? id + 1 : null;
-  var prevLink = (prev !== null)
-    ? "<a onclick=\"showPage('project'," + prev + ")\">&#8592; " + projects[prev].title + "</a>"
-    : "<span></span>";
-  var nextLink = (next !== null)
-    ? "<a onclick=\"showPage('project'," + next + ")\">" + projects[next].title + " &#8594;</a>"
-    : "<span></span>";
+  var prevLink = (prev !== null) ? "<a onclick=\"showPage('project'," + prev + ")\">&#8592; " + projects[prev].title + "</a>" : "<span></span>";
+  var nextLink = (next !== null) ? "<a onclick=\"showPage('project'," + next + ")\">" + projects[next].title + " &#8594;</a>" : "<span></span>";
   var imagesHtml = "";
   if (p.images) {
     imagesHtml += "<div class=\"project-images\">";
@@ -599,32 +428,27 @@ function renderProject(id) {
       if (block.layout === "full") {
         imagesHtml += "<div class=\"project-img-full\"><img src=\"" + block.srcs[0] + "\" alt=\"" + block.alts[0] + "\"></div>";
       } else if (block.layout === "half") {
-        imagesHtml += "<div class=\"project-img-half\">";
-        imagesHtml += "<img src=\"" + block.srcs[0] + "\" alt=\"" + block.alts[0] + "\">";
-        imagesHtml += "<img src=\"" + block.srcs[1] + "\" alt=\"" + block.alts[1] + "\">";
-        imagesHtml += "</div>";
+        imagesHtml += "<div class=\"project-img-half\"><img src=\"" + block.srcs[0] + "\" alt=\"" + block.alts[0] + "\"><img src=\"" + block.srcs[1] + "\" alt=\"" + block.alts[1] + "\"></div>";
       }
     }
     imagesHtml += "</div>";
   }
-
   document.getElementById("project-content").innerHTML =
     "<div class=\"project-back\" onclick=\"showPage('home')\">&#8592; back to work</div>" +
-    "<div class=\"project-label\">Case Study &middot; " + p.type + "</div>" +
+    "<div class=\"project-label\">" + p.type + "</div>" +
     "<div class=\"project-title\">" + p.title + "</div>" +
     "<div class=\"project-meta\">" +
       "<div class=\"project-meta-item\"><span>Role</span>" + p.role + "</div>" +
       "<div class=\"project-meta-item\"><span>Company</span>" + p.company + "</div>" +
-      "<div class=\"project-meta-item\"><span>Type</span>" + p.type + "</div>" +
     "</div>" +
     "<hr class=\"project-divider\">" +
-    "<div class=\"project-section-title\">// the problem</div>" +
+    "<div class=\"project-section-title\">the problem</div>" +
     "<div class=\"project-body\"><p>" + p.problem + "</p></div>" +
-    "<div class=\"project-section-title\">// what I designed</div>" +
+    "<div class=\"project-section-title\">what I designed</div>" +
     "<div class=\"project-body\"><p>" + p.solving + "</p></div>" +
-    "<div class=\"project-section-title\">// impact &amp; outcomes</div>" +
+    "<div class=\"project-section-title\">impact &amp; outcomes</div>" +
     "<div class=\"project-body\"><p>" + p.impact + "</p></div>" +
-    "<div class=\"project-section-title\">// how I think about this work</div>" +
+    "<div class=\"project-section-title\">how I think about this work</div>" +
     "<div class=\"project-body\"><p>" + p.process + "</p></div>" +
     "<div class=\"project-ascii-banner\">" + p.ascii + "</div>" +
     imagesHtml +
@@ -635,14 +459,13 @@ function renderGrid() {
   var html = "";
   for (var i = 0; i < projects.length; i++) {
     var p = projects[i];
-    html +=
-      "<div class=\"work-card\" onclick=\"showPage('project'," + i + ")\">" +
-        "<div class=\"work-card-num\">0" + (i + 1) + "</div>" +
-        "<div class=\"work-card-title\">" + p.title + "</div>" +
-        "<div class=\"work-card-type\">" + p.type + "</div>" +
-        "<div class=\"work-card-ascii\">" + p.ascii + "</div>" +
-        "<div class=\"work-card-arrow\">&#8594;</div>" +
-      "</div>";
+    html += "<div class=\"work-card\" onclick=\"showPage('project'," + i + ")\">" +
+      "<div class=\"work-card-num\">0" + (i+1) + "</div>" +
+      "<div class=\"work-card-title\">" + p.title + "</div>" +
+      "<div class=\"work-card-type\">" + p.type + "</div>" +
+      "<div class=\"work-card-ascii\">" + p.ascii + "</div>" +
+      "<div class=\"work-card-arrow\">&#8594;</div>" +
+    "</div>";
   }
   document.getElementById("work-grid").innerHTML = html;
 }
