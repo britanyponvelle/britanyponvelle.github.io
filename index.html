@@ -10,22 +10,22 @@
 <style>
 :root{--cream:#F5F2EB;--ink:#2a2a25;--ink-light:#6b6960;}
 *{margin:0;padding:0;box-sizing:border-box;}
-body{background:var(--cream);color:var(--ink);font-family:'Space Grotesk',sans-serif;overflow-x:hidden;}
+body{background:var(--cream);color:var(--ink);font-family:'Space Grotesk',sans-serif;font-weight:300;overflow-x:hidden;}
 a{color:inherit;text-decoration:none;}
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 2.5rem;background:var(--cream);border-bottom:1px solid rgba(42,42,37,.12);}
-.nav-name{font-size:.85rem;letter-spacing:.08em;font-weight:700;font-family:'Space Mono',monospace;cursor:pointer;}
-.nav-links{display:flex;gap:2rem;font-size:.78rem;font-family:'Space Grotesk',sans-serif;}
+.nav-name{font-size:.875rem;font-weight:300;font-family:'Space Grotesk',sans-serif;cursor:pointer;}
+.nav-links{display:flex;gap:2rem;font-size:.875rem;font-family:'Space Grotesk',sans-serif;}
 .nav-links a{opacity:.6;transition:opacity .2s;cursor:pointer;}
 .nav-links a:hover{opacity:1;}
 .page{display:none;min-height:100vh;}
 .page.active{display:block;}
-#home{padding-top:60px;}
+#home{padding-top:60px;padding-bottom:40px;}
 .ascii-scene{width:100%;overflow:hidden;background:var(--cream);position:relative;display:block;}
 .ascii-pre-wrap{width:100%;overflow:hidden;display:block;position:relative;margin:0;padding:0;}
-.ascii-pre{font-family:'Space Mono',monospace;font-size:10px;line-height:1.5;color:var(--ink);white-space:pre;display:block;user-select:none;padding:0;margin:0;transform-origin:top left;letter-spacing:.05em;}
-.scene-label{position:absolute;top:28%;left:50%;transform:translate(-50%,calc(-50% + 20px));font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:300;letter-spacing:.25em;color:var(--ink);text-transform:uppercase;pointer-events:none;z-index:5;white-space:nowrap;}
+.ascii-pre{font-family:'Space Mono',monospace;font-size:10px;line-height:1.5;color:var(--ink);white-space:pre;display:block;user-select:none;padding:0;margin:0;transform-origin:top left;}
+.scene-label{position:absolute;top:28%;left:50%;transform:translate(-50%,calc(-50% + 20px));font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:300;color:var(--ink);pointer-events:none;z-index:5;white-space:nowrap;}
 .ticker-band{width:100%;display:flex;align-items:center;overflow:hidden;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);background:var(--cream);white-space:nowrap;font-family:'Space Mono',monospace;font-size:10px;padding:.5rem 0;}
-.ticker-inner{display:inline-block;white-space:nowrap;animation:tickerScroll 36s linear infinite;color:var(--ink);letter-spacing:.05em;}
+.ticker-inner{display:inline-block;white-space:nowrap;animation:tickerScroll 36s linear infinite;color:var(--ink);}
 @keyframes tickerScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 @keyframes sailBoat{0%{left:105%}100%{left:-10%}}
 @media(max-width:768px){
@@ -33,55 +33,76 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
   .ascii-pre-wrap{border:1px solid rgba(42,42,37,0.15);overflow:hidden;}
 }
 .hero-text{text-align:center;padding:3.5rem 2rem 2rem;}
-.hero-title{font-size:clamp(1.6rem,4vw,2.6rem);font-weight:600;font-family:'Space Grotesk',sans-serif;letter-spacing:-.02em;line-height:1.2;margin-bottom:1rem;}
-.hero-sub{font-size:.9rem;font-family:'Space Grotesk',sans-serif;font-weight:300;color:var(--ink-light);line-height:1.9;max-width:520px;margin:0 auto 2rem;}
-.hero-cta{display:inline-block;border:1px solid var(--ink);padding:.6rem 1.6rem;font-size:.75rem;font-family:'Space Mono',monospace;letter-spacing:.1em;transition:background .2s,color .2s;cursor:pointer;}
+.hero-title{font-size:clamp(1.6rem,4vw,2.6rem);font-weight:300;font-family:'Space Grotesk',sans-serif;line-height:1.2;margin-bottom:1rem;}
+.hero-sub{font-size:1.125rem;font-family:'Space Grotesk',sans-serif;font-weight:300;color:var(--ink-light);line-height:1.9;max-width:520px;margin:0 auto 2rem;}
+.hero-cta{display:inline-block;border:1px solid var(--ink);padding:.6rem 1.6rem;font-size:.875rem;font-family:'Space Mono',monospace;transition:background .2s,color .2s;cursor:pointer;}
 .hero-cta:hover{background:var(--ink);color:var(--cream);}
 .work-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:0;max-width:1200px;margin:0 auto;border-top:1px solid rgba(42,42,37,.12);border-left:1px solid rgba(42,42,37,.12);}
 .work-card{border-right:1px solid rgba(42,42,37,.12);border-bottom:1px solid rgba(42,42,37,.12);padding:2rem;cursor:pointer;transition:background .2s;position:relative;overflow:hidden;}
 .work-card:hover{background:rgba(42,42,37,.04);}
-.work-card-num{font-size:.65rem;font-family:'Space Mono',monospace;opacity:.3;margin-bottom:1rem;letter-spacing:.1em;}
-.work-card-title{font-size:1.05rem;font-family:'Space Grotesk',sans-serif;font-weight:600;margin-bottom:.4rem;line-height:1.3;}
-.work-card-type{font-size:.72rem;font-family:'Space Mono',monospace;opacity:.5;}
+.work-card-num{font-size:.875rem;font-family:'Space Mono',monospace;opacity:.3;margin-bottom:1rem;}
+.work-card-title{font-size:1.05rem;font-family:'Space Grotesk',sans-serif;font-weight:300;margin-bottom:.4rem;line-height:1.3;}
+.work-card-type{font-size:.875rem;font-family:'Space Grotesk',sans-serif;opacity:.5;}
 .work-card-ascii{font-family:'Space Mono',monospace;font-size:9px;line-height:1.2;opacity:.25;margin-top:1.2rem;white-space:pre;pointer-events:none;}
-.work-card-arrow{position:absolute;bottom:1.5rem;right:1.5rem;font-size:.8rem;opacity:0;transition:opacity .2s;}
+.work-card-arrow{position:absolute;bottom:1.5rem;right:1.5rem;font-size:.875rem;opacity:0;transition:opacity .2s;}
 .work-card:hover .work-card-arrow{opacity:.5;}
-#project{padding-top:80px;}
+#project{padding-top:80px;padding-left:20px;padding-right:20px;padding-bottom:20px;}
 .project-inner{max-width:800px;margin:0 auto;padding:3rem 2rem 6rem;}
-.project-back{font-size:.72rem;font-family:'Space Mono',monospace;letter-spacing:.06em;opacity:.5;cursor:pointer;display:inline-flex;align-items:center;gap:.4rem;margin-bottom:3rem;transition:opacity .2s;}
+.project-back{font-size:.875rem;font-family:'Space Mono',monospace;opacity:.5;cursor:pointer;display:inline-flex;align-items:center;gap:.4rem;margin-bottom:3rem;transition:opacity .2s;}
 .project-back:hover{opacity:1;}
-.project-label{font-size:.65rem;font-family:'Space Mono',monospace;letter-spacing:.14em;opacity:.4;text-transform:uppercase;margin-bottom:.8rem;}
-.project-title{font-size:clamp(1.6rem,4vw,2.4rem);font-family:'Space Grotesk',sans-serif;font-weight:600;letter-spacing:-.02em;line-height:1.2;margin-bottom:1.5rem;}
+.project-label{font-size:.875rem;font-family:'Space Mono',monospace;opacity:.4;margin-bottom:.8rem;}
+.project-title{font-size:clamp(1.6rem,4vw,2.4rem);font-family:'Space Grotesk',sans-serif;font-weight:300;line-height:1.2;margin-bottom:1.5rem;}
 .project-meta{display:flex;gap:2.5rem;margin-bottom:2.5rem;flex-wrap:wrap;}
-.project-meta-item{font-size:.82rem;font-family:'Space Grotesk',sans-serif;}
-.project-meta-item span{opacity:.45;display:block;font-family:'Space Mono',monospace;letter-spacing:.08em;margin-bottom:.25rem;text-transform:uppercase;font-size:.62rem;}
+.project-meta-item{font-size:1.125rem;font-family:'Space Grotesk',sans-serif;font-weight:300;}
+.project-meta-item span{opacity:.45;display:block;font-family:'Space Grotesk',sans-serif;margin-bottom:.25rem;font-size:.875rem;}
 .project-divider{border:none;border-top:1px solid rgba(42,42,37,.12);margin:2rem 0;}
-.project-section-title{font-size:.65rem;font-family:'Space Mono',monospace;letter-spacing:.14em;opacity:.45;text-transform:uppercase;margin-bottom:.8rem;margin-top:2.5rem;}
-.project-body{font-size:.95rem;font-family:'Space Grotesk',sans-serif;font-weight:300;line-height:1.85;color:rgba(42,42,37,.75);}
+.project-section-title{font-size:.875rem;font-family:'Space Mono',monospace;opacity:.45;margin-bottom:.8rem;margin-top:40px;}
+.project-body{font-size:1.125rem;font-family:'Space Grotesk',sans-serif;font-weight:300;line-height:1.85;color:#2a2a25;margin-bottom:40px;}
 .project-body p{margin-bottom:1.2rem;}
 .project-body strong{color:var(--ink);font-weight:500;}
 .project-ascii-banner{text-align:center;font-family:'Space Mono',monospace;font-size:9px;line-height:1.3;opacity:.18;margin:3rem 0;white-space:pre;}
-.project-nav{display:flex;justify-content:space-between;margin-top:4rem;padding-top:2rem;border-top:1px solid rgba(42,42,37,.12);font-size:.72rem;font-family:'Space Mono',monospace;}
+.project-nav{display:flex;justify-content:space-between;margin-top:4rem;padding-top:2rem;border-top:1px solid rgba(42,42,37,.12);font-size:.875rem;font-family:'Space Mono',monospace;}
 .project-nav a{opacity:.5;cursor:pointer;transition:opacity .2s;}
 .project-nav a:hover{opacity:1;}
-.project-images{margin-top:3rem;}
-.project-img-full{width:100%;margin-bottom:1.5rem;}
-.project-img-full img{width:100%;height:auto;display:block;border-radius:4px;}
-.project-img-half{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem;}
-.project-img-half img{width:100%;height:auto;display:block;border-radius:4px;}
+/* ── Image system ── */
+.project-img-block{margin:40px 0;}
+.project-img-caption{font-size:.875rem;font-family:'Space Mono',monospace;opacity:.4;margin-top:.65rem;display:block;}
+
+/* full — spans #project inner width (viewport minus 40px padding) */
+.img-layout-full{width:calc(100vw - 40px);position:relative;left:50%;margin-left:calc(-50vw + 20px);overflow:hidden;}
+.img-layout-full img{width:100%;height:auto;display:block;border-radius:10px;}
+
+/* half — two equal image columns, same width as full */
+.img-layout-half{width:calc(100vw - 40px);position:relative;left:50%;margin-left:calc(-50vw + 20px);display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.img-layout-half figure{display:flex;flex-direction:column;margin:0;}
+.img-layout-half img{width:100%;height:100%;object-fit:cover;display:block;border-radius:10px;}
+
+/* img-left — image 50% left, text 50% right */
+.img-layout-img-left,.img-layout-img-right{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;margin:3rem 0;}
+.img-layout-img-left img,.img-layout-img-right img{width:100%;height:auto;display:block;border-radius:10px;}
+.img-layout-img-right .img-col{order:2;}
+.img-layout-img-right .img-text-col{order:1;}
+.img-text-col{display:flex;flex-direction:column;justify-content:center;}
+.img-text-col p{font-size:1.125rem;font-family:'Space Grotesk',sans-serif;font-weight:300;line-height:1.85;color:#2a2a25;margin:0;}
+
+@media(max-width:640px){
+  .img-layout-half{grid-template-columns:1fr;}
+  .img-layout-img-left,.img-layout-img-right{grid-template-columns:1fr;gap:1.5rem;}
+  .img-layout-img-right .img-col,.img-layout-img-right .img-text-col{order:unset;}
+}
 #about{padding-top:80px;}
 .about-inner{max-width:700px;margin:0 auto;padding:4rem 2rem 6rem;}
-.about-title{font-size:clamp(1.4rem,3vw,2rem);font-family:'Space Grotesk',sans-serif;font-weight:600;letter-spacing:-.02em;margin-bottom:1.5rem;line-height:1.3;}
-.about-body{font-size:.95rem;font-family:'Space Grotesk',sans-serif;font-weight:300;line-height:1.95;color:rgba(42,42,37,.75);}
+.about-title{font-size:clamp(1.4rem,3vw,2rem);font-family:'Space Grotesk',sans-serif;font-weight:300;margin-bottom:1.5rem;line-height:1.3;}
+.about-body{font-size:1.125rem;font-family:'Space Grotesk',sans-serif;font-weight:300;line-height:1.95;color:#2a2a25;}
 .about-body p{margin-bottom:1.4rem;}
 .about-body strong{color:var(--ink);font-weight:500;}
 .about-values{margin:2.5rem 0;border-top:1px solid rgba(42,42,37,.12);border-bottom:1px solid rgba(42,42,37,.12);padding:2rem 0;}
-.about-values-title{font-size:.65rem;font-family:'Space Mono',monospace;letter-spacing:.14em;opacity:.45;text-transform:uppercase;margin-bottom:1.2rem;}
-.value-item{display:flex;gap:1rem;margin-bottom:1rem;font-size:.88rem;font-family:'Space Grotesk',sans-serif;font-weight:300;line-height:1.7;}
+.about-values-title{font-size:.875rem;font-family:'Space Mono',monospace;opacity:.45;margin-bottom:1.2rem;}
+.value-item{display:flex;gap:1rem;margin-bottom:1rem;font-size:1.125rem;font-family:'Space Grotesk',sans-serif;font-weight:300;line-height:1.7;}
 .value-dot{font-family:'Space Mono',monospace;opacity:.35;flex-shrink:0;}
 .about-contact{margin-top:3rem;}
-.about-contact-title{font-size:.65rem;font-family:'Space Mono',monospace;letter-spacing:.14em;opacity:.45;text-transform:uppercase;margin-bottom:1rem;}
-.contact-links{display:flex;gap:1.5rem;font-size:.82rem;font-family:'Space Grotesk',sans-serif;flex-wrap:wrap;}
+.about-contact-title{font-size:.875rem;font-family:'Space Mono',monospace;opacity:.45;margin-bottom:1rem;}
+.contact-links{display:flex;gap:1.5rem;font-size:.875rem;font-family:'Space Grotesk',sans-serif;flex-wrap:wrap;}
 .contact-links a{border-bottom:1px solid rgba(42,42,37,.25);padding-bottom:.1em;transition:border-color .2s;}
 .contact-links a:hover{border-color:var(--ink);}
 </style>
@@ -89,7 +110,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 <body>
 
 <nav>
-  <div class="nav-name" onclick="showPage('home')">BRITANY CALLAHAN</div>
+  <div class="nav-name" onclick="showPage('home')">Britany Callahan</div>
   <div class="nav-links">
     <a onclick="showPage('home');setTimeout(function(){var el=document.getElementById('work-grid');if(el)el.scrollIntoView({behavior:'smooth'});},50);">Work</a>
     <a onclick="showPage('about')">Me</a>
@@ -121,12 +142,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 
 <div id="about" class="page">
   <div class="about-inner">
-    <div class="about-title">Hey, I'm Britany &mdash; a product designer on the Payments team at Intuit QuickBooks.</div>
+    <div class="about-title">Hey, I'm Britany 👋</div>
     <div class="about-body">
-      <p>I've spent my career designing across fintech, healthcare, energy, and enterprise software. The common thread? The best products come from teams that are genuinely excited about the problems they're solving.</p>
-      <p>I believe good, responsible design should actually improve people's lives. It should be intentional. Useful. Human. I design to help people &mdash; whether that's bringing moments of delight, making complex tasks feel simple, or connecting people to what they need, faster.</p>
-      <p>When I'm not designing, you'll probably find me deep into an audiobook, working on a new pottery piece, or taking a very long walk (longer than necessary, always).</p>
-      <p>Currently designing at Intuit. Case studies available upon request.</p>
+      <p>I'm a product designer on the Payments team at Intuit QuickBooks. I've worked across fintech, healthcare, energy, and enterprise software &mdash; but the throughline is always the same: the best products come from teams that actually care about the problem they're solving.</p>
+      <p>I believe good design should make life a little better. It should be thoughtful, useful, and human. I'm drawn to work that helps people move faster, feel more confident, and maybe even enjoy the process a bit more.</p>
+      <p>Outside of work, I'm usually listening to an audiobook, working on a pottery project, or taking a very long walk (longer than necessary, always).</p>
+      <p>Currently at Intuit. Case studies available upon request.</p>
     </div>
 
     <div class="about-contact">
@@ -384,35 +405,158 @@ function showPage(page, projectId) {
 var projects = [
   { id:0, title:"Intuit QuickBooks Payments", type:"Product Design - App", role:"Staff Product Designer", company:"Intuit",
     ascii:"  .---------.\n  | $ PAY  |\n  |  ----   |\n  '---------'",
-    problem:"Small business owners spend significant time managing how they get paid, chasing invoices and navigating complex payment flows.",
-    solving:"I lead end-to-end UX for the QuickBooks Payments team, from first invoice to payout timelines.",
-    impact:"My work touches hundreds of thousands of small business owners daily.",
-    process:"My process centers on listening first, mapping failure modes before touching any wireframe." },
-  { id:1, title:"Proper Finance", type:"Product Design - App", role:"Senior Product Designer", company:"Proper Finance",
+    challenge:"Small business owners spend significant time managing how they get paid, chasing invoices and navigating complex payment flows.",
+    solution:"Coming soon.",
+    impact:"Coming soon." },
+  { id:1, title:"Dispute Resolution - QuickBooks", type:"Product Design - App", role:"Senior Product Designer", company:"Intuit",
+    ascii:"  .--------.\n  | [!] vs |\n  | resolve |\n  '--------'",
+    challenge:"Chargebacks were the single largest source of negative customer satisfaction scores in QuickBooks Payments' Resolution Center — accounting for nearly half of all low CES feedback in Q4 2024. The experience was working against merchants at an already stressful moment. Document uploads gave no confirmation they had succeeded. Status messaging didn't reflect how chargebacks actually resolve. And merchants who simply wanted to accept a chargeback had no way to do so — their only option was to wait out a deadline while receiving reminder emails nudging them toward an action they'd already decided against.",
+    solution:"Voice of Customer research surfaced consistent themes: merchants wanted a reliable upload experience, the ability to provide context beyond what Intuit requested, and enough transparency to feel confident the process was working. The team focused on the highest-friction moments rather than a full overhaul.</p><p>The rebuilt document upload widget introduced a clear submit action, the ability to stage and delete files before submitting, drag-and-drop interaction, and post-submission confirmation. An additional documents option and merchant explanation field gave merchants more ways to tell their side of the story. We also added an Overview section with reason-code-specific guidance covering 80% of dispute volume, and a View Details panel that surfaced case information that had previously been out of reach.",
+    impact:"Over 90% of merchants are using the merchant explanation feature — a strong indicator it addressed a real need. Negative CES scores dropped roughly 50% year-over-year." },
+  { id:2, title:"Proper Finance App", type:"Product Design - App", role:"Senior Product Designer", company:"Proper Finance",
     ascii:"  [=======]\n  | ledger |\n  [=======]",
-    problem:"Companies building financial products spend enormous time managing data integrity.",
-    solving:"I designed a reconciliation tool, financial data platform, and compliance tooling.",
-    impact:"A reconciliation that required custom engineering could happen in a few clicks.",
-    process:"I mapped mental models around correctness and built a UI that felt rigorous but approachable." },
-  { id:2, title:"BrandExtract 15-Year Anniversary", type:"Branding + Website", role:"Art Director", company:"BrandExtract",
+    challenge:"Financial reconciliation for fintech companies was a manual and fragmented process. Teams were pulling data from multiple banks, payment processors, and internal systems with no reliable way to see what was actually happening — making it hard to trust the data and time-consuming to track down issues when something didn't add up.</p><p>Early on, it was also unclear who the product should primarily serve. Reconciliation work touched investigators, finance teams, and operators, each with different needs but shared frustrations around visibility and accuracy. Getting that clarity was foundational to designing something that would actually hold together.",
+    solution:"Working with a Design Lead and cross-functional team, I contributed to user research, helped synthesize findings into personas and shared artifacts, and designed key workflows across the product. The research helped the team get aligned on who we were designing for and what mattered most — which shaped every subsequent decision.</p><p>We structured the product around the lifecycle of money movement: ingesting data, reconciling it, and investigating issues. I contributed to wireframes and prototypes across these areas. For reconciliation setup, we designed flows that let users configure matching logic, run multiple passes, and compare datasets side-by-side. For data ingestion, the focus was on making external data immediately visible and editable — so users could correct issues and apply transformations without needing engineering support. Search and filtering tools gave teams a flexible way to find and resolve discrepancies quickly. And rather than surfacing raw mismatches, we introduced a more structured exception handling workflow with a clearer audit trail, so investigations were easier to follow and hand off.</p><p>Throughout, I worked closely with engineering and product to understand constraints, incorporate feedback, and support implementation with production-ready designs and QA.",
+    impact:"The product made it meaningfully easier for teams to set up and manage their reconciliation workflows, reducing the time it took to get up and running and investigate issues. Proper scaled to handle high transaction volumes across fintech customers and was ultimately acquired by Intuit." },
+  { id:3, title:"BrandExtract 15-Year Anniversary Microsite", type:"Branding + Website", role:"Art Director", company:"BrandExtract",
     ascii:"  *  15  *\n  ~years~\n  of grit",
-    problem:"Milestone campaigns often feel generic and self-congratulatory.",
-    solving:"I served as Art Director, leading microsite design centered on lived values.",
-    impact:"The microsite told the story of how real people embodied each value.",
-    process:"The biggest challenge was pacing a 15-year journey in a single scroll." },
-  { id:3, title:"Millar", type:"Website", role:"Art Director + Designer", company:"BrandExtract",
+    challenge:"At 15 years, BrandExtract had evolved well beyond its original identity — the work had become more strategic, the clients more enterprise-focused, and the capabilities significantly deeper. But the brand's external perception hadn't kept pace. The anniversary was a natural moment to celebrate, but the real opportunity was sharper: use the milestone to close the gap between what the company had become and how it was seen in the market.",
+    solution:"The campaign was built around BrandExtract's four core values — Have Grit, Teach and Lead, Step Up and Own It, Act With Heart — using the anniversary not just to mark time, but to show how those values had been the engine behind 15 years of growth. That gave the narrative something more durable than a timeline: a living proof point.</p><p>Working as Art Director alongside a team of designers, a writer, strategists, and a Brand Experience Director, I contributed to concept sessions and reviews across the campaign, and led the microsite design and execution. The key strategic decision was to resist the pull of purely retrospective storytelling — instead orienting the experience forward, using past credibility as a launchpad rather than the main event.</p><p>The microsite was designed as a guided narrative arc: framing the milestone, surfacing the values in action, and landing on future vision. The tradeoff was consciously pulling back on nostalgia in favor of a more refined visual system — one that better matched the sophistication of the work the company was actually doing.",
+    impact:"The campaign drove increased engagement across digital touchpoints and strengthened perception of BrandExtract as a strategic partner. The narrative and visual consistency across the microsite, social content, and supporting materials made it a coordinated brand moment rather than a one-off announcement. The work earned a W3 Silver Award.",
+    images:[
+      { position:"after-challenge",
+        layout:"full",
+        srcs:["images/brandextract-anniversary/1_be-anni-home.png"],
+        alts:["BrandExtract 15-Year Anniversary microsite hero"] },
+      { position:"after-solution",
+        layout:"half",
+        srcs:["images/brandextract-anniversary/2_be-anni-grit.png","images/brandextract-anniversary/3_be-anni-15-animation.gif"],
+        alts:["Have Grit values section","15-year animation"] },
+      { position:"after-solution",
+        layout:"half",
+        srcs:["images/brandextract-anniversary/4_be-anni-stats.gif","images/brandextract-anniversary/7_be-anni-dotherightthing.png"],
+        alts:["Stats section","Do the right thing values section"] },
+      { position:"after-solution",
+        layout:"full",
+        srcs:["images/brandextract-anniversary/5_be-anni-step-up.png"],
+        alts:["Step Up and Own It section"] },
+      { position:"after-impact",
+        layout:"full",
+        srcs:["images/brandextract-anniversary/6_be-anni-thanks.png"],
+        alts:["Thank you for your belief closing screen"] }
+    ] },
+  { id:4, title:"Millar Website", type:"Website", role:"Art Director + Designer", company:"BrandExtract",
     ascii:"  ~pressure~\n   sensing\n  /tech\\",
-    problem:"Millar evolved into an OEM services partner but their presence did not reflect that.",
-    solving:"I led concept development and art directed the full visual system.",
-    impact:"The redesign repositioned Millar as a precision integration partner.",
-    process:"Every decision was evaluated against one question: does this build confidence?" },
-  { id:4, title:"WillScot Experience", type:"Branding", role:"Art Director + Lead Designer", company:"BrandExtract",
+    challenge:"Millar had evolved from a product manufacturer serving research and clinical markets into an OEM partner supporting medical device companies with integrated sensing technology. This shift brought a new audience, different expectations, and a more complex value proposition. However, their website and messaging still reflected the earlier product-focused story, creating a disconnect with where the business had grown.",
+    solution:"The work focused on repositioning Millar as a partner rather than just a supplier. As Art Director, I worked closely with a cross-functional team of designers, a writer, strategists, and a Brand Experience Director. My role included contributing to early concepts, collaborating on wireframes for key pages, and leading the visual design and execution of the site.</p><p>Together, we shifted the messaging from product-led to partner-led, emphasizing Millar's decades of sensing expertise in a way that resonated with OEM customers. The site structure was reorganized around applications and integration pathways to better align with how these customers evaluate solutions. Visually, we aimed to balance precision and technical credibility with approachability, reflecting both the complexity of the work and the collaborative nature of the company.",
+    impact:"The updated site better reflects Millar's role as an OEM partner and communicates more clearly with the audiences they're focused on today.",
+    images:[
+      { position:"after-challenge",
+        layout:"full",
+        srcs:["images/millar/1_millar-intro.jpg"],
+        alts:["Millar website hero"] },
+      { position:"after-solution",
+        layout:"half",
+        srcs:["images/millar/2_millar-pink.jpg","images/millar/3_millar-knowledge.jpg"],
+        alts:["Product solutions page","Knowledge center"] },
+      { position:"after-solution",
+        layout:"full",
+        srcs:["images/millar/4_millar-process.jpg"],
+        alts:["Creating cutting-edge solutions — process section"] },
+      { position:"after-solution",
+        layout:"full",
+        srcs:["images/millar/5_millar-oem.jpg"],
+        alts:["Bringing OEM breakthroughs to life"] },
+      { position:"after-solution",
+        layout:"full",
+        srcs:["images/millar/6_millar-gated-content.jpg"],
+        alts:["Access gated content"] },
+      { position:"after-impact",
+        layout:"full",
+        srcs:["images/millar/7_millar-team.png"],
+        alts:["Meet the team"] }
+    ] },
+  { id:5, title:"WillScot Experience", type:"Branding", role:"Art Director + Lead Designer", company:"BrandExtract",
     ascii:"  [we]\n /unity\\\n \\together/",
-    problem:"WillScot needed an internal brand connecting thousands of employees to shared purpose.",
-    solving:"The conceptual anchor was we, meaning every individual contributes to the experience.",
-    impact:"The campaign rolled out across video, print, digital, signage, and a logo system.",
-    process:"Employees can tell when messaging is performative. I rooted everything in the concrete." }
+    challenge:"WillScot was scaling fast — expanding through acquisitions and integrating new teams across a growing North American footprint. With that momentum came a real opportunity: to define what a consistent, exceptional customer experience looked like at every touchpoint, no matter who was delivering it. Leadership wanted a framework that could travel across a distributed workforce and make every individual feel personally connected to the company's larger mission — not just aware of it.",
+    solution:"The insight driving the campaign was deceptively simple: the customer experience isn't a department, it's everyone. We named that idea \"the WillScot Experience\" and built a visual and verbal system around it. Working alongside a Brand Strategist, Writer, and Brand Experience Director, I led the art direction and design to translate that concept into a tangible identity system — one that employees could see themselves in.</p><p>The deliberate use of Venn diagrams, geometric blocks, and bold overlapping forms wasn't decorative. Each visual choice was doing conceptual work — communicating intersection, interdependence, and shared ownership without being abstract or corporate. We avoided anything that felt like top-down messaging. Instead, the system was designed to feel like an honest mirror: you are part of this. The system extended across a logo suite, video, and both print and digital collateral, giving the idea consistency and reach across a distributed workforce.",
+    impact:"The WillScot Experience supported efforts to align teams across a rapidly growing organization. The event introduced a shared way of thinking about customer experience that teams could use in practice, helping inspire teams and create more consistency.",
+    images:[
+      { position:"after-challenge",
+        layout:"full",
+        srcs:["images/willscot/1_we-logo.jpg"],
+        alts:["WillScot Experience identity system"] },
+      { position:"after-solution",
+        layout:"half",
+        srcs:["images/willscot/2_wsc-we-vid.jpg","images/willscot/3_wsc-video-highlight.jpg"],
+        alts:["Campaign collateral","Identity cards"] },
+      { position:"after-solution",
+        layout:"full",
+        srcs:["images/willscot/4_wsc-cubes.jpg"],
+        alts:["Motion and video"] },
+      { position:"after-solution",
+        layout:"half",
+        srcs:["images/willscot/5_wsc-cubes-stacked.jpg","images/willscot/6_wsc-banner.jpg"],
+        alts:["Print collateral","Banner system"] },
+      { position:"after-solution",
+        layout:"full",
+        srcs:["images/willscot/7_wsc-video-highlight.jpg"],
+        alts:["Campaign messaging"] },
+      { position:"after-impact",
+        layout:"full",
+        srcs:["images/willscot/8_wsc-photo.jpeg"],
+        alts:["WillScot Experience in the wild"] }
+    ] },
 ];
+
+function renderImageBlock(block) {
+  var layout = block.layout || "full";
+  var srcs   = block.srcs   || [];
+  var alts   = block.alts   || srcs.map(function(){ return ""; });
+  var caps   = block.captions || [];
+  var html   = "<div class=\"project-img-block\">";
+
+  if (layout === "full") {
+    // Edge-to-edge single image
+    html += "<div class=\"img-layout-full\">";
+    html += "<img src=\"" + srcs[0] + "\" alt=\"" + (alts[0]||"") + "\" loading=\"lazy\">";
+    html += "</div>";
+    if (caps[0]) html += "<span class=\"project-img-caption\">" + caps[0] + "</span>";
+
+  } else if (layout === "half") {
+    // Two equal image columns
+    html += "<div class=\"img-layout-half\">";
+    for (var i = 0; i < srcs.length; i++) {
+      html += "<figure>";
+      html += "<img src=\"" + srcs[i] + "\" alt=\"" + (alts[i]||"") + "\" loading=\"lazy\">";
+      if (caps[i]) html += "<figcaption class=\"project-img-caption\">" + caps[i] + "</figcaption>";
+      html += "</figure>";
+    }
+    html += "</div>";
+
+  } else if (layout === "img-left" || layout === "img-right") {
+    // Image 50% + text 50%
+    html += "<div class=\"img-layout-" + layout + "\">";
+    html += "<div class=\"img-col\"><img src=\"" + srcs[0] + "\" alt=\"" + (alts[0]||"") + "\" loading=\"lazy\"></div>";
+    html += "<div class=\"img-text-col\"><p>" + (block.text || "") + "</p>";
+    if (caps[0]) html += "<span class=\"project-img-caption\" style=\"margin-top:1.2rem;\">" + caps[0] + "</span>";
+    html += "</div>";
+    html += "</div>";
+  }
+
+  html += "</div>";
+  return html;
+}
+
+function renderImagesAt(images, pos) {
+  if (!images) return "";
+  var html = "";
+  for (var i = 0; i < images.length; i++) {
+    var p = images[i].position || "after-impact";
+    if (p === pos) html += renderImageBlock(images[i]);
+  }
+  return html;
+}
 
 function renderProject(id) {
   var p    = projects[id];
@@ -420,21 +564,9 @@ function renderProject(id) {
   var next = (id < projects.length - 1) ? id + 1 : null;
   var prevLink = (prev !== null) ? "<a onclick=\"showPage('project'," + prev + ")\">&#8592; " + projects[prev].title + "</a>" : "<span></span>";
   var nextLink = (next !== null) ? "<a onclick=\"showPage('project'," + next + ")\">" + projects[next].title + " &#8594;</a>" : "<span></span>";
-  var imagesHtml = "";
-  if (p.images) {
-    imagesHtml += "<div class=\"project-images\">";
-    for (var ii = 0; ii < p.images.length; ii++) {
-      var block = p.images[ii];
-      if (block.layout === "full") {
-        imagesHtml += "<div class=\"project-img-full\"><img src=\"" + block.srcs[0] + "\" alt=\"" + block.alts[0] + "\"></div>";
-      } else if (block.layout === "half") {
-        imagesHtml += "<div class=\"project-img-half\"><img src=\"" + block.srcs[0] + "\" alt=\"" + block.alts[0] + "\"><img src=\"" + block.srcs[1] + "\" alt=\"" + block.alts[1] + "\"></div>";
-      }
-    }
-    imagesHtml += "</div>";
-  }
+
   document.getElementById("project-content").innerHTML =
-    "<div class=\"project-back\" onclick=\"showPage('home')\">&#8592; back to work</div>" +
+    "<div class=\"project-back\" onclick=\"showPage('home')\">&#8592; Back to work</div>" +
     "<div class=\"project-label\">" + p.type + "</div>" +
     "<div class=\"project-title\">" + p.title + "</div>" +
     "<div class=\"project-meta\">" +
@@ -442,16 +574,17 @@ function renderProject(id) {
       "<div class=\"project-meta-item\"><span>Company</span>" + p.company + "</div>" +
     "</div>" +
     "<hr class=\"project-divider\">" +
-    "<div class=\"project-section-title\">the problem</div>" +
-    "<div class=\"project-body\"><p>" + p.problem + "</p></div>" +
-    "<div class=\"project-section-title\">what I designed</div>" +
-    "<div class=\"project-body\"><p>" + p.solving + "</p></div>" +
-    "<div class=\"project-section-title\">impact &amp; outcomes</div>" +
+    renderImagesAt(p.images, "top") +
+    "<div class=\"project-section-title\">Challenge</div>" +
+    "<div class=\"project-body\"><p>" + p.challenge + "</p></div>" +
+    renderImagesAt(p.images, "after-challenge") +
+    "<div class=\"project-section-title\">Solution</div>" +
+    "<div class=\"project-body\"><p>" + p.solution + "</p></div>" +
+    renderImagesAt(p.images, "after-solution") +
+    "<div class=\"project-section-title\">Impact</div>" +
     "<div class=\"project-body\"><p>" + p.impact + "</p></div>" +
-    "<div class=\"project-section-title\">how I think about this work</div>" +
-    "<div class=\"project-body\"><p>" + p.process + "</p></div>" +
+    renderImagesAt(p.images, "after-impact") +
     "<div class=\"project-ascii-banner\">" + p.ascii + "</div>" +
-    imagesHtml +
     "<div class=\"project-nav\">" + prevLink + nextLink + "</div>";
 }
 
