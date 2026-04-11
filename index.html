@@ -498,21 +498,29 @@ function scaleAscii() {
   var wrap = pre && pre.parentElement;
   if (!pre || !wrap) return;
   pre.style.transform = "none";
+  pre.style.fontSize  = "";
   wrap.style.height   = "";
-  var natW = pre.scrollWidth;
-  var natH = pre.scrollHeight;
-  var vpW  = document.documentElement.clientWidth;
+  var vpW  = Math.max(window.innerWidth || 0, document.documentElement.clientWidth || 0);
   var vpH  = window.innerHeight * 0.75;
-  if (!natW || !natH) return;
   var isMobile = vpW < 768;
-  var padding  = 0;
-  var mobileVpW = isMobile ? Math.max(window.innerWidth, document.documentElement.clientWidth) : vpW;
-  var scale    = isMobile ? (mobileVpW / natW) : Math.max(vpW / natW, vpH / natH);
-  var scaledW  = natW * scale;
-  var offsetX  = (!isMobile && scaledW > vpW) ? -(scaledW - vpW) / 2 : 0;
-  pre.style.transform       = "translateX(" + offsetX + "px) scale(" + scale + ")";
-  pre.style.transformOrigin = "top left";
-  wrap.style.height = (natH * scale) + "px";
+  if (isMobile) {
+    var natW = pre.scrollWidth;
+    if (!natW) return;
+    var curFs = parseFloat(window.getComputedStyle(pre).fontSize) || 10;
+    var newFs = curFs * vpW / natW;
+    pre.style.fontSize = newFs + "px";
+    wrap.style.height  = pre.scrollHeight + "px";
+  } else {
+    var natW = pre.scrollWidth;
+    var natH = pre.scrollHeight;
+    if (!natW || !natH) return;
+    var scale   = Math.max(vpW / natW, vpH / natH);
+    var scaledW = natW * scale;
+    var offsetX = scaledW > vpW ? -(scaledW - vpW) / 2 : 0;
+    pre.style.transform       = "translateX(" + offsetX + "px) scale(" + scale + ")";
+    pre.style.transformOrigin = "top left";
+    wrap.style.height = (natH * scale) + "px";
+  }
 }
 
 function animate(ts) {
