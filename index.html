@@ -128,7 +128,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
     <div class="ascii-pre-wrap">
       <pre class="ascii-pre" id="ascii-scene-pre"></pre>
     </div>
-    <div class="scene-label">UX Designer</div>
+    <div class="scene-label">UX designer in Madison, WI</div>
   </div>
   <div class="ticker-band">
     <div class="ticker-inner">
@@ -162,11 +162,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 
 <div id="about" class="page">
   <div class="about-inner">
+    <img src="images/me/me.jpeg" alt="Britany" style="width:100%;display:block;border-radius:4px;margin-bottom:2.5rem;">
     <div class="about-title">Hey, I'm Britany 👋</div>
     <div class="about-body">
-      <p>I'm a product designer on the Payments team at Intuit QuickBooks. I've worked across fintech, healthcare, energy, and enterprise software &mdash; but the throughline is always the same: the best products come from teams that actually care about the problem they're solving.</p>
-      <p>I believe good design should make life a little better. It should be thoughtful, useful, and human. I'm drawn to work that helps people move faster, feel more confident, and maybe even enjoy the process a bit more.</p>
-      <p>Outside of work, I'm usually listening to an audiobook, working on a pottery project, or taking a very long walk (longer than necessary, always).</p>
+      <p>I'm a product designer on the Payments team at Intuit QuickBooks. I've worked across fintech, healthcare, energy, and enterprise software.</p>
+      <p>I believe the best products come from teams that actually care about the problem they're solving. Good design should make life a little better. It should be thoughtful, useful, and human. I'm drawn to work that helps people move faster, feel more confident, and maybe even enjoy the process a bit more.</p>
+      <p>Outside of work, I'm usually listening to an audiobook, working on a pottery project, or painting.</p>
       <p>Currently at Intuit. Case studies available upon request.</p>
     </div>
 
@@ -185,7 +186,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 var SKY_ROWS = 29;
 var SCENE_W  = (window.innerWidth < 768) ? 60 : 360;
 var W        = SCENE_W;
-var BAY_ABS  = SKY_ROWS + 2;
+var BAY_ABS  = SKY_ROWS + 1;
 var SPRITE_TOP  = BAY_ABS - 10;
 var SPRITE_HULL_START = 10;
 var SPRITE_MAST_COL   = 9;
@@ -211,19 +212,63 @@ var SUN = [
   [3, W-12, "  /  |  \\  "]
 ];
 
-var SKYLINE = [
-  "        ______        ____            ______        ________        ___            ________        ______        ",
-  "       |      |      |    |          |      |      |        |      |   |          |        |      |      |       ",
-  "   ____|      |______|    |____      |      |______|        |______|   |____      |        |______|      |____   ",
-  "  |    | [] []|      | [] |    |     | [] []|      |  [] [] |      | []|    |     |  [] [] |      | [] []|   |  ",
-  "  |    | [] []|      |    |    |     | [] []|      |        |      |   |    |     |  [] [] |      | [] []|   |  ",
-  "  |    |      |      | [] |    |     |      |      |  [] [] |      | []|    |     |        |      |      |   |  ",
-  "  |    | [] []|      |    |    |     | [] []|      |        |      |   |    |     |  [] [] |      | [] []|   |  ",
-  "  |    | [] []|      | [] |    |     | [] []|      |  [] [] |      | []|    |     |  [] [] |      | [] []|   |  ",
-  "  |    |      |      |    |    |     |      |      |        |      |   |    |     |        |      |      |   |  ",
-  "  |____|______|______|____|____|_____|______|______|________|______|___|____|_____|________|______|______|___|  ",
-  "=======================================================================================================================",
-  "_______________________________________________________________________________________________________________________"
+// Procedural building generator for Madison skyline
+function makeBuilding(w, h, roofStyle) {
+  var inner = w - 2;
+  var rows = [];
+  // Roof
+  if (roofStyle === 0) rows.push(" " + "." + "-".repeat(inner) + "." + " ");
+  else if (roofStyle === 1) rows.push(" " + " " + "_".repeat(inner) + " " + " ");
+  else rows.push(" " + "." + "-".repeat(inner) + "." + " ");
+  // Windows: evenly spaced dots, padded from walls
+  var winRow = " |";
+  for (var i = 0; i < inner; i++) {
+    winRow += (i >= 1 && i <= inner - 2 && i % 2 === 1) ? "." : " ";
+  }
+  winRow += "| ";
+  for (var r = 0; r < h - 2; r++) rows.push(winRow);
+  // Base
+  rows.push(" |" + "_".repeat(inner) + "| ");
+  return rows;
+}
+
+// Seeded random for deterministic skyline
+var _seed = 42;
+function srand() { _seed = (_seed * 16807 + 0) % 2147483647; return (_seed & 0x7fffffff) / 0x7fffffff; }
+
+// Background layer — outline-only buildings (no windows), stamped before foreground
+var _bgSeed = 137;
+function bgrand() { _bgSeed = (_bgSeed * 16807 + 0) % 2147483647; return (_bgSeed & 0x7fffffff) / 0x7fffffff; }
+function makeBackgroundBuilding(w, h) {
+  var inner = w - 2;
+  var rows = ["-".repeat(w)];
+  for (var r = 0; r < h - 2; r++) rows.push("|" + " ".repeat(inner) + "|");
+  rows.push("|" + "_".repeat(inner) + "|");
+  return rows;
+}
+
+
+// Wisconsin State Capitol dome — positioned center-ish, behind the terrace
+var CAPITOL = [
+  "      .      ",
+  "     (*)     ",
+  "    (___)    ",
+  "   /     \\   ",
+  "  |_______|  ",
+  "  |  | |  |  ",
+  "  |__|_|__|  "
+];
+
+// Monona Terrace — Madison WI: two cylindrical towers, arched glass bays, flat rooftop deck
+var TERRACE = [
+  "|.--.(   )._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._.(   ).--|",
+  "|    (   )   .---.    .---.    .---.    .---.    .---.    .---.    .---.    .---.    .---.  (   )     |",
+  "|    (   )  /     \\  /     \\  /     \\  /     \\  /     \\  /     \\  /     \\  /     \\  /     \\ (   )    |",
+  "|    (   )  |     |  |     |  |     |  |     |  |     |  |     |  |     |  |     |  |     | (   )    |",
+  "|    (   )  |     |  |     |  |     |  |     |  |     |  |     |  |     |  |     |  |     | (   )    |",
+  "|    (   )  |_____|  |_____|  |_____|  |_____|  |_____|  |_____|  |_____|  |_____|  |_____| (   )    |",
+  "|    (   ).-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-..(   )    |",
+  "|     `--'                                                                                    `--'    |"
 ];
 
 var SPRITE = [
@@ -301,7 +346,6 @@ function buildSkyRows(off) {
 
 function buildStaticRows() {
   var rows = [];
-  rows.push(pad("=".repeat(W), W));
   rows.push(pad("_".repeat(W), W));
   var wA = "~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ . ";
   var wB = ". ~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ . ~ ";
@@ -322,15 +366,72 @@ function buildStaticRows() {
 
 var staticRows = buildStaticRows();
 
-function stampSkyline(allRows) {
-  var startRow = BAY_ABS - SKYLINE.length;
-  for (var li = 0; li < SKYLINE.length; li++) {
+function stampSprite(allRows, sprite, startRow, startCol) {
+  for (var li = 0; li < sprite.length; li++) {
     var absRow = startRow + li;
     if (absRow < 0 || absRow >= allRows.length) continue;
-    var line = SKYLINE[li], tiled = "";
-    while (tiled.length < SCENE_W + line.length) tiled += line;
-    allRows[absRow] = tiled.slice(0, SCENE_W);
+    allRows[absRow] = insertAt(allRows[absRow], startCol, sprite[li]);
   }
+}
+
+function stampMadison(allRows) {
+  var terCol = Math.floor((SCENE_W - TERRACE[0].length) / 2);
+  var terRight = terCol + TERRACE[0].length;
+
+  // Background layer — outline buildings, taller, no window detail, stamped first
+  _bgSeed = 137;
+  var bx = terCol - 3;
+  while (bx > 0) {
+    var bw = Math.floor(bgrand() * 9) + 7;
+    var bh = Math.floor(bgrand() * 8) + 9;
+    bx -= bw + Math.floor(bgrand() * 5) + 1;
+    stampSprite(allRows, makeBackgroundBuilding(bw, bh), BAY_ABS - bh, bx);
+  }
+  bx = terRight + 3;
+  while (bx < SCENE_W - 4) {
+    var bw = Math.floor(bgrand() * 9) + 7;
+    var bh = Math.floor(bgrand() * 8) + 9;
+    stampSprite(allRows, makeBackgroundBuilding(bw, bh), BAY_ABS - bh, bx);
+    bx += bw + Math.floor(bgrand() * 5) + 1;
+  }
+
+  // Foreground skyline buildings — stamped on top of background
+  _seed = 42;
+  var terRight = terCol + TERRACE[0].length;
+
+  // Left side: fill from col 2 to terCol-4
+  var x = terCol - 4;
+  while (x > 2) {
+    var bw = Math.floor(srand() * 6) + 5;   // width 5-10
+    var bh = Math.floor(srand() * 9) + 4;   // height 4-12
+    var roof = Math.floor(srand() * 2);
+    var gap = Math.floor(srand() * 3);       // gap 0-2
+    var bldg = makeBuilding(bw, bh, roof);
+    x -= bw + 2;
+    stampSprite(allRows, bldg, BAY_ABS - bldg.length, x);
+    x -= gap;
+  }
+
+  // Right side: fill from terRight+4 to SCENE_W-2
+  x = terRight + 4;
+  while (x < SCENE_W - 8) {
+    var bw = Math.floor(srand() * 6) + 5;
+    var bh = Math.floor(srand() * 9) + 4;
+    var roof = Math.floor(srand() * 2);
+    var gap = Math.floor(srand() * 3);
+    var bldg = makeBuilding(bw, bh, roof);
+    stampSprite(allRows, bldg, BAY_ABS - bldg.length, x);
+    x += bw + 2 + gap;
+  }
+
+  // Capitol dome — centered, sits ~7 rows above waterline
+  var capCol = Math.floor(SCENE_W / 2) - 6;
+  var capRow = BAY_ABS - CAPITOL.length - 1;
+  stampSprite(allRows, CAPITOL, capRow, capCol);
+
+  // Monona Terrace — wide, at waterline, centered
+  var terRow = BAY_ABS - TERRACE.length;
+  stampSprite(allRows, TERRACE, terRow, terCol);
 }
 
 function stampBoat(allRows, bx) {
@@ -365,7 +466,7 @@ function stampBoat(allRows, bx) {
 function renderScene(cOff) {
   var skyRows = buildSkyRows(cOff);
   var allRows = skyRows.concat(staticRows.slice());
-  stampSkyline(allRows);
+  stampMadison(allRows);
   stampBoat(allRows, boatX);
   stampBoat(allRows, boat2X);
   var pre = document.getElementById("ascii-scene-pre");
