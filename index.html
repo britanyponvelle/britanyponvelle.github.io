@@ -293,6 +293,20 @@ var BOAT_SPEED = 12;
 var cloudX     = 0;
 var lastTime   = null;
 
+// Propeller plane — flies right-to-left
+var PLANE = [
+  "          _            ",
+  "    / `7=-             ",
+  " __/__/__________   /\\",
+  "( `\"  \"\"\"\"\"\"\"\"\"\"\"` p/=-",
+  " `~~\\  \\~~~~~~`       ",
+  "    \\  \\===-          ",
+  "    ` _ `             "
+];
+var PLANE_TOP   = 3;
+var PLANE_SPEED = 20;
+var planeX      = SCENE_W + 5;
+
 function pad(s, w) {
   if (s.length >= w) return s.slice(0, w);
   return s + " ".repeat(w - s.length);
@@ -463,12 +477,22 @@ function stampBoat(allRows, bx) {
   }
 }
 
+function stampPlane(allRows, px) {
+  var col = Math.round(px);
+  for (var li = 0; li < PLANE.length; li++) {
+    var absRow = PLANE_TOP + li;
+    if (absRow < 0 || absRow >= allRows.length) continue;
+    allRows[absRow] = insertAt(allRows[absRow], col, PLANE[li]);
+  }
+}
+
 function renderScene(cOff) {
   var skyRows = buildSkyRows(cOff);
   var allRows = skyRows.concat(staticRows.slice());
   stampMadison(allRows);
   stampBoat(allRows, boatX);
   stampBoat(allRows, boat2X);
+  stampPlane(allRows, planeX);
   var pre = document.getElementById("ascii-scene-pre");
   if (pre) pre.textContent = allRows.join("\n");
 }
@@ -504,6 +528,8 @@ function animate(ts) {
   if (boatX < -(SPRITE[0].length + 5)) boatX = SCENE_W + 10;
   boat2X -= BOAT_SPEED * dt;
   if (boat2X < -(SPRITE[0].length + 5)) boat2X = SCENE_W + 10;
+  planeX -= PLANE_SPEED * dt;
+  if (planeX < -(PLANE[0].length + 10)) planeX = SCENE_W + Math.floor(SCENE_W * 1.4);
   renderScene(cloudX);
   requestAnimationFrame(animate);
 }
