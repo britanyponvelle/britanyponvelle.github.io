@@ -149,10 +149,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
       band.appendChild(inner.cloneNode(true));
     })();
   </script>
-  <div class="hero-text">
-    <div class="hero-title">Design that helps people.<br>Built with joy.</div>
-    <div class="hero-cta" onclick="showPage('about')">About me &rarr;</div>
-  </div>
   <div class="work-grid" id="work-grid"></div>
 </div>
 
@@ -552,7 +548,7 @@ function showPage(page, projectId) {
 }
 
 var projects = [
-  { id:1, title:"Dispute Resolution - QuickBooks", type:"Product Design - App", role:"Senior Product Designer", company:"Intuit",
+  { id:1, title:"Dispute Resolution - QuickBooks", type:"App", role:"Senior Product Designer", company:"Intuit",
     ascii:"   /=======\\\n  | | | | | |\n  |_________|",
     challenge:"Chargebacks were the single largest source of negative customer satisfaction scores in QuickBooks Payments' Resolution Center — accounting for nearly half of all low CES feedback. The experience was working against merchants at an already stressful moment. Document uploads gave no confirmation they had succeeded. Status messaging didn't reflect how chargebacks actually resolve. And merchants who simply wanted to accept a chargeback had no way to do so — their only option was to wait out a deadline while receiving reminder emails nudging them toward an action they'd already decided against.",
     solution:"Voice of Customer research surfaced consistent themes: merchants wanted a reliable upload experience, the ability to provide context beyond what Intuit requested, and enough transparency to feel confident the process was working. The team focused on the highest-friction moments rather than a full overhaul.</p><p>The rebuilt document upload widget introduced a clear submit action, the ability to stage and delete files before submitting, drag-and-drop interaction, and post-submission confirmation. An additional documents option and merchant explanation field gave merchants more ways to tell their side of the story. We also added an Overview section with reason-code-specific guidance covering 80% of dispute volume, and a View Details panel that surfaced case information that had previously been out of reach.",
@@ -575,7 +571,7 @@ var projects = [
         srcs:["images/dispute-resolution/5_charge-back.png","images/dispute-resolution/6_charge-back.png"],
         alts:["View details panel","Case information"] }
     ] },
-  { id:2, title:"Proper Finance App", type:"Product Design - App", role:"Senior Product Designer", company:"Proper Finance",
+  { id:2, title:"Proper Finance App", type:"App", role:"Senior Product Designer", company:"Proper Finance",
     ascii:"  .-------.\n  | $$$$$ |\n  '-------.\n  | $$$$$ |\n  '-------'",
     challenge:"Financial reconciliation for fintech companies was a manual and fragmented process. Teams were pulling data from multiple banks, payment processors, and internal systems with no reliable way to see what was actually happening — making it hard to trust the data and time-consuming to track down issues when something didn't add up.</p><p>Early on, it was also unclear who the product should primarily serve. Reconciliation work touched investigators, finance teams, and operators, each with different needs but shared frustrations around visibility and accuracy. Getting that clarity was foundational to designing something that would actually hold together.",
     solution:"Working with a Design Lead, I contributed to user research, synthesized findings into personas and shared artifacts, and designed key workflows across the product. The research helped the team get aligned on who we were designing for and what mattered most — which shaped every subsequent decision.</p><p>We structured the product around the lifecycle of money movement: ingesting data, reconciling it, and investigating issues. I contributed to wireframes and prototypes across these areas. For reconciliation setup, we designed flows that let users configure matching logic, run multiple passes, and compare datasets side-by-side. For data ingestion, the focus was on making external data immediately visible and editable — so users could correct issues and apply transformations without needing engineering support. Search and filtering tools gave teams a flexible way to find and resolve discrepancies quickly. And rather than surfacing raw mismatches, we introduced a more structured exception handling workflow with a clearer audit trail, so investigations were easier to follow and hand off.</p><p>Throughout, I worked closely with engineering and product to understand constraints, incorporate feedback, and support implementation with production-ready designs and QA.",
