@@ -509,8 +509,8 @@ function scaleAscii() {
   var vpH  = window.innerHeight * 0.75;
   if (!natW || !natH) return;
   var isMobile = vpW < 768;
-  var padding  = isMobile ? 40 : 0;
-  var scale    = isMobile ? ((vpW - padding) / natW) : Math.max(vpW / natW, vpH / natH);
+  var padding  = 0;
+  var scale    = isMobile ? (vpW / natW) : Math.max(vpW / natW, vpH / natH);
   var scaledW  = natW * scale;
   var offsetX  = (!isMobile && scaledW > vpW) ? -(scaledW - vpW) / 2 : 0;
   pre.style.transform       = "translateX(" + offsetX + "px) scale(" + scale + ")";
